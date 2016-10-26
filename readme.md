@@ -376,6 +376,54 @@ nav p {
 
 ```
 
+Format Content
+
+```css
+h2, h3 {
+    color: #88a308;
+    margin: 8px 0;
+    font-size: 1.4rem;
+    letter-spacing: -1px;
+}
+
+a {
+    color: #f90;
+    text-decoration: none;
+    transition: color 0.5s linear;
+}
+li > h4 {
+    margin-top: 12px;
+}
+aside li {
+    list-style: none;
+}
+article li, article ol {
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+}
+```
+
+Animate Links
+
+```css
+.content a:hover {
+    color: #88a308;
+    transition-property: color;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+}
+```
+or `transition: color 0.2s linear;`
+
+
+
+Footer
+
+
+
+SVG
+
+Tap Highlight Color
 
 
 
