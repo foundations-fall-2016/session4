@@ -4,6 +4,8 @@
 
 Examine code with regards to the [recipe schema](https://schema.org/Recipe) at [schema.org](http://schema.org/docs/gs.html). Here is an [example](http://www.foodnetwork.com/recipes/food-network-kitchens/basil-pesto-recipe2.html).
 
+Note the `<abbr>` tag and the absence of a wrapper div (even though the design shows a centered document). The document contains 2 script tags. Examine the page n the browser's dev tools. NOte the console message and the classes applied to the html tag.
+
 ```css
 * { 
     margin:0; 
@@ -12,19 +14,17 @@ Examine code with regards to the [recipe schema](https://schema.org/Recipe) at [
 body { 
    font: 100%/1.5 "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif; 
    color : #333;
+   max-width: 840px;
+   margin: 0 auto;
+   margin-top: 24px;
 } 
-.wrapper {
-    max-width: 840px;
-    margin: 0 auto;
-    margin-top: 24px;
-}
-.content_main {
+article {
 	float: left;
 	width : 50%;
 	padding : 16px;
 }
 
-.content_sub { 
+aside { 
 	float : left;
 	width : 50%;
 	padding : 16px; 
@@ -209,13 +209,13 @@ header h1 {
 
 
 ```css
-/*.content_main {
+/*article {
     float: left;
     width : 50%;
     padding : 16px;
 }
 
-.content_sub { 
+aside { 
     float : left;
     width : 50%;
     padding : 16px; 
@@ -228,7 +228,7 @@ header h1 {
 
 .content {}
 
-.content_main, .content_sub {
+article, aside {
     box-sizing: border-box;
     padding: 1rem;
 }
@@ -240,11 +240,11 @@ header h1 {
     .content {
         background: url('img/html.png') repeat-y 50% 50%;
     }
-    .content_main {
+    article {
         float: left;
         width: 50%;
     }
-    .content_sub {
+    aside {
         float: left;
         width: 50%;
     }
@@ -416,22 +416,162 @@ Animate Links
 or `transition: color 0.2s linear;`
 
 
-
 Footer
 
-
-
-SVG
-
-Tap Highlight Color
-
-
-
-
+```css
+footer {
+    clear: both;
+    background: #88A308;
+    border-radius: 0 0 8px 8px;
+    padding: 40px 10px 10px 1rem;
+    text-align: right;
+}
+```
 
 ##Homework
 
-1. 
+1. Create a small screen version of the page using media queries and a new breakpoint for smaller screens (540px). Pay attention to the header in portrait mode. Try re-implementing the basil image as a branding element.
+
+##NOTES
+
+###Flex xolumns
+
+```css
+@media only screen and (min-width: 768px) {
+    ...
+    .content {
+        background: url('img/html.png') repeat-y 50% 50%;
+        display: flex;
+    }
+    .content_sub {
+
+    }
+    ...
+}
+```
+
+
+```css
+@media only screen and (min-width: 768px) {
+	...
+    .content {
+        display: flex;
+    }
+    .content_sub {
+        background: #F5FAEF;
+        box-shadow: -4px 0px 4px #ddd;
+    }
+    ...
+}
+```
+
+###SVG
+
+###CSS Starburst
+<body>
+<div class="rect-container">
+<div class="rect copy">Beta!</div>
+<div class="rect one"> </div>
+<div class="rect two"> </div>
+<div class="rect three"> </div>
+</div>
+</body>
+add styles
+<style>
+.copy {
+    color: #fff;
+    z-index: 999;
+    font-size: 90px;
+    text-align: center;
+    line-height: 200px;
+}
+.rect-container {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    top: 100px;
+    left: 100px;
+    -webkit-transform: scale(.4) rotate(15deg);
+    cursor: pointer;
+    -webkit-transition: all 0.2s linear;
+}
+.rect-container:hover { -webkit-transform: scale(.5) rotate(0deg) }
+.rect {
+    width: 200px;
+    height: 200px;
+    background: #f90;
+    -webkit-transform: rotate(0deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.two { -webkit-transform: rotate(30deg) }
+.three { -webkit-transform: rotate(60deg) }
+
+</style>
+
+
+
+###Tap Highlight Color
+
+###JavaScript Beta Window
+
+<script src="js/jquery.js"></script>
+
+<script>
+	jQuery('.branding h2').addClass('emphasis');
+	$('.branding h2').addClass('emphasis');
+</script>
+
+$(document).ready(function() {
+		$('.branding h2').addClass('emphasis');
+	});
+
+<script>
+(function() {
+	$('.branding h2').on('click', function() {
+		alert('test');
+		$(this).toggleClass('emphasis');
+	});
+	})();
+</script>
+
+<div class="betainfo">
+<p>Information about the beta program<p>
+</div>
+
+.betainfo {
+    display: none;
+    width: 200px;
+    height: 100px;
+    background: #fff;
+    border: 1px solid #999;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+}
+
+Then try this to center the box:
+left:calc(50% - 100px);
+
+<script>
+(function() {
+	$('.branding h2').on('click', function() {
+		$('.betainfo').toggle();
+		$('.betainfo').fadeToggle();
+	});
+})();
+</script>
+
+$('.branding h2').on('hover', function() {
+console.log('Hello World!');
+
+
+
+
+
+
+
 
 
 
