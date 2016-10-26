@@ -431,7 +431,11 @@ footer {
 
 1. Create a small screen version of the page using media queries and a new breakpoint for smaller screens (540px). Pay attention to the header in portrait mode. Try re-implementing the basil image as a branding element.
 
+
+
 ##NOTES
+
+###Images
 
 ###Flex columns
 
@@ -445,6 +449,9 @@ Step one:
     .content {
         background: url('img/html.png') repeat-y 50% 50%;
         display: flex;
+    }
+    .content_main {
+        
     }
     .content_sub {
 
@@ -460,6 +467,9 @@ Step two:
 	...
     .content {
         display: flex;
+    }
+    .content_main {
+        flex: 1 0 60%;
     }
     .content_sub {
         background: #F5FAEF;
