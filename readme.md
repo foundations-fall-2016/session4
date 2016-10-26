@@ -2,9 +2,9 @@
 
 ##Basilica
 
-Examine code with regards to the [recipe schema](https://schema.org/Recipe) at [schema.org](http://schema.org/docs/gs.html). Here is an [example](http://www.foodnetwork.com/recipes/food-network-kitchens/basil-pesto-recipe2.html).
+Examine code with regards to the [recipe schema](https://schema.org/Recipe) at [schema.org](http://schema.org/docs/gs.html). Here is an [example on the food network](http://www.foodnetwork.com/recipes/food-network-kitchens/basil-pesto-recipe2.html) page that uses the recipe schema.
 
-Note the `<abbr>` tag and the absence of a wrapper div (even though the design shows a centered document). The document contains 2 script tags. Examine the page n the browser's dev tools. NOte the console message and the classes applied to the html tag.
+Note the `<abbr>` tag, the `role` attributes, and the absence of a wrapper div (even though the design shows a centered document). The document contains 2 script tags. Examine the page n the browser's dev tools. NOte the console message and the classes applied to the html tag.
 
 ```css
 * { 
@@ -38,7 +38,9 @@ footer {
 }
 ```
 
-Faux columns
+###Faux columns
+
+Since the two columns can be of different heights and our design calls for two columns of a different color we can not color the aside and article divs. We'll use a very old technique for the moment and change it later.
 
 ```css
 .content { 
@@ -70,7 +72,7 @@ The method uses `:after` to insert a character after the div and then sets it to
 
 Since box collapsing is rather common let's create a generic class that we can use elsewhere.
 
-Change the selector and updated the method to something shorter and more modern:
+Update the method to something shorter and more modern and apply the cf classname to the content div:
 
 ```css
 .cf:before,
@@ -84,7 +86,6 @@ Change the selector and updated the method to something shorter and more modern:
 }
 ```
 
-Add the cf class to the content div.
 
 We'll return to the :before and :after pseudo-classes later.
 
@@ -94,20 +95,20 @@ Add the green background to the branding div.
 
 ```css
 header {
-	position : relative;
-	height : 120px;
-	background :#88a308;
+	position: relative;
+	height: 120px;
+	background: #88a308;
 	border-radius: 8px 8px 0px 0px;
 }
 ```
 
-Add absolute / relative positioning and create a viewable area for the image. (Note: we can get the image dimensions via the inspector.) 
+Add absolute positioning and create a viewable area for the image on the `<h1>`. (Note: we can get the image dimensions via the inspector.) 
 
 `@import url(futura/stylesheet.css);`
 
 ```css
 header h1 { 
-	position : absolute; 
+	position: absolute; 
 	top: -80px; 
 	left:-100px;
 	z-index: 90;
@@ -121,6 +122,7 @@ header h1 {
 }
 ```
 
+Since the absolute positioning technique is complex let's use something a little different:
 
 ```css
 header h1 {
@@ -224,10 +226,6 @@ aside {
 
 
 ```css
-.content {}
-
-.content {}
-
 article, aside {
     box-sizing: border-box;
     padding: 1rem;
@@ -251,7 +249,9 @@ article, aside {
 }
 ```
 
-Branding
+###Header Branding
+
+Small screen:
 
 ```css
 
@@ -270,7 +270,7 @@ header h1 {
 
 ```
 
-Large screen
+Large screen:
 
 ```css
 @media only screen and (min-width: 768px) {
@@ -286,15 +286,12 @@ Large screen
         padding-left: 260px;
         padding-top: 90px;
         background: url(img/basil.png) no-repeat;
-        font-family: FuturaStdLight, sans-serif;
-        font-weight: normal;
-        color: #fff;
         font-size: 5rem;
     }
 }
 
 
-##Navigation
+###Navigation
 
 ```css
 
@@ -349,7 +346,9 @@ Use Modernizr
     background: linear-gradient(to bottom, #344E8B 1%, #6F89C7 99%);
 }
 ```
-Flexbox
+###Flexbox
+
+Refactor the nav to use flexbox.
 
 ```css
 nav {
@@ -376,7 +375,7 @@ nav p {
 
 ```
 
-Format Content
+###Format Content
 
 ```css
 h2, h3 {
@@ -434,7 +433,11 @@ footer {
 
 ##NOTES
 
-###Flex xolumns
+###Flex columns
+
+Refactor the article and aside columns to use flexbox.
+
+Step one:
 
 ```css
 @media only screen and (min-width: 768px) {
@@ -450,6 +453,7 @@ footer {
 }
 ```
 
+Step two:
 
 ```css
 @media only screen and (min-width: 768px) {
@@ -516,30 +520,40 @@ add styles
 
 ###JavaScript Beta Window
 
-<script src="js/jquery.js"></script>
+`<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>`
 
+```html
 <script>
-	jQuery('.branding h2').addClass('emphasis');
-	$('.branding h2').addClass('emphasis');
+	jQuery('header h2').addClass('emphasis');
+	$('header h2').addClass('emphasis');
 </script>
+```
 
+```js
 $(document).ready(function() {
-		$('.branding h2').addClass('emphasis');
-	});
+	$('header h2').addClass('emphasis');
+});
+```
 
+```js
 <script>
 (function() {
-	$('.branding h2').on('click', function() {
+	$('header h2').on('click', function() {
 		alert('test');
 		$(this).toggleClass('emphasis');
 	});
 	})();
 </script>
+```
 
+
+```html
 <div class="betainfo">
 <p>Information about the beta program<p>
 </div>
+```
 
+```css
 .betainfo {
     display: none;
     width: 200px;
@@ -550,21 +564,27 @@ $(document).ready(function() {
     top: 10px;
     left: 50%;
 }
+```
 
 Then try this to center the box:
-left:calc(50% - 100px);
 
+`left:calc(50% - 100px);`
+
+```js
 <script>
 (function() {
-	$('.branding h2').on('click', function() {
+	$('header h2').on('click', function() {
 		$('.betainfo').toggle();
 		$('.betainfo').fadeToggle();
 	});
 })();
 </script>
+```
 
-$('.branding h2').on('hover', function() {
+```js
+$('header h2').on('hover', function() {
 console.log('Hello World!');
+```
 
 
 
