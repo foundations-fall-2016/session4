@@ -29,7 +29,9 @@ article, aside {
 }
 ```
 
-Note the use of margin on the body element. Add `box-sizing: border-box;` to the article / aside rule.
+Note the use of margin on the body element. 
+
+Add `box-sizing: border-box;` to the article / aside rule.
 
 Note the footer. Because both columns have been floated it can wrap.
 
@@ -76,8 +78,7 @@ Since box collapsing is rather common let's create a generic class that we can u
 Update the method to something shorter and more modern and apply the cf classname to the content div:
 
 ```css
-.cf:before,
-.cf:after {
+.cf:before, .cf:after {
     content: " ";
     display: table;
 }
@@ -86,7 +87,6 @@ Update the method to something shorter and more modern and apply the cf classnam
     clear: both;
 }
 ```
-
 
 We'll return to the :before and :after pseudo-classes later.
 
@@ -130,11 +130,7 @@ header h1 {
     transform: translateY(-80px) translateX(-100px);
 	padding-left: 260px;
 	padding-top: 90px;
-	background: url(img/basil.png) no-repeat;
-	font-family: FuturaStdLight, sans-serif; 
-	font-weight: normal;
-	color:#fff;
-	font-size: 5rem;
+	...
 }
 ```
 
@@ -147,7 +143,7 @@ Note:
 </header>
 ```
 
-Note the current position of the beta link.
+Note the current position of the beta link. We could collapse the `<h1>` with a float:
 
 ```css
 header h1 {
@@ -156,7 +152,9 @@ header h1 {
 }
 ```
 
-Allows the beta to situate itself but may effect other elements of the page.
+This allows the beta to situate itself but has unwanted effects on the other elements of the page.
+
+But given our design if might be better to absolutely position the beta element. 
 
 ```css
 header a.beta {
@@ -176,16 +174,16 @@ header a.beta {
 ```
 
 ```css
-header a.beta:hover {
-	transform: rotate(0deg) scale(1.2);
+header a.beta {
+	...
+	transform: rotate(20deg);
+	transition: all 1s ease;
 }
 ```
 
-
 ```css
-header a.beta {
-	...
-	transition: all 1s ease;
+header a.beta:hover {
+	transform: rotate(0deg) scale(1.2);
 }
 ```
 
