@@ -61,17 +61,18 @@ Note that we cannot see the background image. The content div has collapsed beca
 
 Here we will use the clear fix method. 
 
-Pseudo-elements		Pseudo-classes
+Pseudo-elements      Pseudo-classes
 
 ```
 ::first-letter		:hover
-::first-line
-::before
-::after
-::selection
+::first-line		:visited
+::before			:link
+::after				:active
+::selection			:target
+					:focus
 ```
 
-Selected text:
+e.g.: Selected text:
 
 ```
 ::selection { 
@@ -79,17 +80,6 @@ Selected text:
 	color:#fff; 
 	text-shadow: none; 
 }
-```
-
-Pseudo-classes:
-
-```
-:hover
-:visited
-:link
-:active
-:target
-:focus
 ```
 
 Clearfix:
