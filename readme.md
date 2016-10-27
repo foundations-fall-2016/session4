@@ -61,7 +61,7 @@ Note that we cannot see the background image. The content div has collapsed beca
 
 Here we will use the clear fix method. 
 
-Pseudo-elements      Pseudo-classes
+`::Pseudo-elements	:Pseudo-classes`
 
 ```
 ::first-letter		:hover
