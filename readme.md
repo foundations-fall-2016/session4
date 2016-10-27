@@ -72,6 +72,8 @@ Here we will use the clear fix method.
 					:focus
 ```
 
+[Ideas](https://css-tricks.com/pseudo-element-roundup/) for using pseudo-elements.
+
 e.g.: Selected text:
 
 ```
@@ -82,7 +84,17 @@ e.g.: Selected text:
 }
 ```
 
-Clearfix:
+Print oupt (with media query)
+
+```
+@media print {
+  a[href]:after {
+    content: " (" attr(href) ") ";
+  }
+}
+```
+
+###Clearfix
 
 ```css
 .content:after { 
@@ -94,7 +106,7 @@ Clearfix:
 }
 ```
 
-The method uses `:after` to insert a character after the div and then sets it to `display: block` and `clear: both` to prevent collapsing.
+The method uses `:after` to insert a character after the div and then sets it to `display: block` and `clear: both` to prevent collapsing and then hides it.
 
 Since box collapsing is rather common let's create a generic class that we can use elsewhere.
 
@@ -537,6 +549,7 @@ Build the window:
     z-index: 20000;
     top: 100px;
     left: calc(50% - 108px);
+    // could also use a negtive margin
 }
 
 .emphasis {
@@ -670,6 +683,38 @@ Add a selector to the script:
 $('header a, .betainfo div a').click( 
 	function() {
 		$('.betainfo').fadeToggle();
+	}
+);
+</script>
+```
+
+###Fade the Background
+
+See [this article](http://tympanus.net/codrops/2013/11/07/css-overlay-techniques/) for additional techniques.
+
+Create a new div in the html:
+
+`<div class="overlay"></div>`
+
+```
+.overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+```
+Add the overlay to the fadeToggle:
+
+```js
+<script>
+$('header a, .betainfo div a').click( 
+	function() {
+		$('.betainfo, .overlay').fadeToggle();
 	}
 );
 </script>
