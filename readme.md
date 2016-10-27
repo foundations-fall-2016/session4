@@ -210,16 +210,11 @@ header h1 {
 
 
 ```css
-/*article {
+/*article, aside {
+    box-sizing: border-box;
+    width: 50%;
     float: left;
-    width : 50%;
-    padding : 16px;
-}
-
-aside { 
-    float : left;
-    width : 50%;
-    padding : 16px; 
+    padding: 1rem;
 }*/
 ```
 
@@ -231,9 +226,6 @@ article, aside {
 }
 
 @media only screen and (min-width: 768px) {
-    header {
-        height: 120px;
-    }
     .content {
         background: url('img/html.png') repeat-y 50% 50%;
     }
@@ -288,7 +280,7 @@ Large screen:
         font-size: 5rem;
     }
 }
-
+```
 
 ###Navigation
 
