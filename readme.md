@@ -61,6 +61,39 @@ Note that we cannot see the background image. The content div has collapsed beca
 
 Here we will use the clear fix method. 
 
+Pseudo-elements		Pseudo-classes
+
+```
+::first-letter		:hover
+::first-line
+::before
+::after
+::selection
+```
+
+Selected text:
+
+```
+::selection { 
+	background:#88A308; 
+	color:#fff; 
+	text-shadow: none; 
+}
+```
+
+Pseudo-classes:
+
+```
+:hover
+:visited
+:link
+:active
+:target
+:focus
+```
+
+Clearfix:
+
 ```css
 .content:after { 
 	content:"."; 
@@ -88,7 +121,7 @@ Update the method to something shorter and more modern and apply the cf classnam
 }
 ```
 
-We'll return to the :before and :after pseudo-classes later.
+Examine the html in the inspector. Look for `::before` and `::after`. We'll return to the :before and :after pseudo-classes later.
 
 ##The Branding Header
 
@@ -487,6 +520,8 @@ Flexbox [the basics](https://css-tricks.com/snippets/css/a-guide-to-flexbox/).
 ##NOTES
 
 ##Add an Image to the layout
+
+
 
 ##Use SVG for the Burst Graphic
 
