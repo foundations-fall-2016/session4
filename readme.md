@@ -708,7 +708,7 @@ Create a new div in the html:
     background-color: rgba(0, 0, 0, 0.5);
 }
 ```
-Add the overlay to the fadeToggle:
+Add the overlay to the [fadeToggle](http://api.jquery.com/fadeToggle/):
 
 ```js
 <script>
