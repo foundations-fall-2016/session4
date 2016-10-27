@@ -285,11 +285,10 @@ Large screen:
 ###Navigation
 
 ```css
-
 nav {
     background: #e4e1d1;
     border-top: 0.5rem solid #ebbd4e;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
 }
 
 nav li {
@@ -307,57 +306,77 @@ nav a {
 }
 ```
 
-Use Modernizr
+Button gradients
 
 ```css
-.cssgradients .nav-storeit a {
+.nav-storeit a {
     background: linear-gradient(to bottom, #dfa910 0%, #fcde41 100%);
     border-radius: 6px;
 }
 
-.cssgradients .nav-storeit a:hover {
+.nav-storeit a:hover {
     background: linear-gradient(to bottom, #fcde41 1%, #dfa910 99%);
 }
 
-.cssgradients .nav-pickit a {
+.nav-pickit a {
     background: linear-gradient(to bottom, #ABC841 0%, #6B861E 100%);
     border-radius: 6px;
 }
 
-.cssgradients .nav-pickit a:hover {
+.nav-pickit a:hover {
     background: linear-gradient(to bottom, #6B861E 1%, #ABC841 99%);
 }
 
-.cssgradients .nav-cookit a {
+.nav-cookit a {
     background: linear-gradient(to bottom, #6F89C7 0%, #344E8B 100%);
     border-radius: 6px;
 }
 
-.cssgradients .nav-cookit a:hover {
+.nav-cookit a:hover {
     background: linear-gradient(to bottom, #344E8B 1%, #6F89C7 99%);
 }
 ```
-###Flexbox
 
-Refactor the nav to use flexbox.
 
 ```css
+nav {
+	...
+    float: left;
+    width: 100%;
+}
+
+nav ul {
+    float: right;
+}
+
+nav p {
+    float: left;
+}
+
+```
+
+###Flexbox
+
+Flexbox [the basics](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). 
+
+Refactor the nav to use flexbox. Remove the floating and widths.
+
+```css
+nav ul {
+    display: flex;
+}
+
+nav li {
+    list-style: none;
+    margin-right: 0.5rem;
+}
+
 nav {
     background: #e4e1d1;
     border-top: 0.5rem solid #ebbd4e;
     padding: 0.5rem;
     display: flex;
     align-items: center;
-}
-
-nav ul {
-    display: flex;
-}
-
-nav li {
-    /*float: left;*/
-    list-style: none;
-    margin-right: 0.5rem;
 }
 
 nav p {
@@ -418,40 +437,28 @@ footer {
 }
 ```
 
-##Homework
+##Flex columns
 
-1. Create a small screen version of the page using media queries and a new breakpoint for smaller screens (540px). Pay attention to the header in portrait mode. Try re-implementing the basil image as a branding element.
+Refactor the article and aside columns to use flexbox. (Applies only to widescreen view.)
 
-
-
-##NOTES
-
-###Images
-
-###Flex columns
-
-Refactor the article and aside columns to use flexbox.
-
-Step one:
+Remove the float property and add flex:
 
 ```css
 @media only screen and (min-width: 768px) {
     ...
     .content {
-        background: url('img/html.png') repeat-y 50% 50%;
-        display: flex;
-    }
-    .content_main {
-        
-    }
-    .content_sub {
-
-    }
+    background: url('img/html.png') repeat-y 50% 50%;
+    display: flex;
+	}
+	
+	article {}
+	
+	aside {}
     ...
 }
 ```
 
-Step two:
+CHange the column widths, remove the background image and add coloring css:
 
 ```css
 @media only screen and (min-width: 768px) {
@@ -459,10 +466,10 @@ Step two:
     .content {
         display: flex;
     }
-    .content_main {
+    article {
         flex: 1 0 60%;
     }
-    .content_sub {
+    aside {
         background: #F5FAEF;
         box-shadow: -4px 0px 4px #ddd;
     }
@@ -470,7 +477,131 @@ Step two:
 }
 ```
 
-###SVG
+##Homework
+
+1. Create a small screen version of the page using media queries and a new breakpoint for smaller screens (540px). Pay attention to the header in portrait mode. Try re-implementing the basil image as a branding element.
+
+##Reading
+Flexbox [the basics](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). 
+
+##NOTES
+
+##Add an Image to the layout
+
+##Use SVG for the Burst Graphic
+
+
+##JavaScript Beta Window
+
+Build the window:
+
+```html
+<div class="betainfo">
+<p>Information about the beta program.<p>
+</div>
+```
+
+```css
+.betainfo {
+    width: 200px;
+    height: 100px;
+    padding: 1rem;
+    background: #fff;
+    border: 2px solid #EABC5A;
+    border-radius: 0.25rem;
+    position: absolute;
+    z-index: 20000;
+    top: 100px;
+    left: calc(50% - 108px);
+}
+
+.emphasis {
+	color: red;
+}
+```
+
+Then try this to center the box:
+
+`left:calc(50% - 100px);`
+
+Let's load jQuery:
+
+`<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>`
+
+Try this in the head first then before the closing of the page:
+
+```html
+<script>
+	jQuery('.betainfo p').addClass('emphasis');
+</script>
+```
+
+Short form:
+
+```html
+<script>
+	$('.betainfo p').addClass('emphasis');
+</script>
+```
+
+This version would work in the header:
+
+```js
+<script>
+$(document).ready(function() {
+	$('.betainfo p').addClass('emphasis');
+});
+</script>
+```
+
+```js
+<script>
+	$('.betainfo p').on('click', 
+		function() {
+			alert('test');
+		}
+	);
+</script>
+```
+
+
+```js
+<script>
+	$('.betainfo p').on('click', 
+		function() {
+			console.log('test');
+		}
+	);
+</script>
+```
+
+
+```js
+<script>
+	$('.betainfo p').on('click', function() {
+		$(this).toggleClass('emphasis');
+	});
+</script>
+```
+
+add `display: none;` to the `.betainfo` rule.
+
+```js
+<script>
+	$('header a').on('click', function() {
+		$('.betainfo').toggle();
+	});
+</script>
+```
+
+```js
+<script>
+	$('header a').on('click', function() {
+		$('.betainfo').fadeToggle();
+	});
+</script>
+```
+
 
 ###CSS Starburst
 <body>
@@ -518,75 +649,6 @@ add styles
 
 
 ###Tap Highlight Color
-
-###JavaScript Beta Window
-
-`<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>`
-
-```html
-<script>
-	jQuery('header h2').addClass('emphasis');
-	$('header h2').addClass('emphasis');
-</script>
-```
-
-```js
-$(document).ready(function() {
-	$('header h2').addClass('emphasis');
-});
-```
-
-```js
-<script>
-(function() {
-	$('header h2').on('click', function() {
-		alert('test');
-		$(this).toggleClass('emphasis');
-	});
-	})();
-</script>
-```
-
-
-```html
-<div class="betainfo">
-<p>Information about the beta program<p>
-</div>
-```
-
-```css
-.betainfo {
-    display: none;
-    width: 200px;
-    height: 100px;
-    background: #fff;
-    border: 1px solid #999;
-    position: absolute;
-    top: 10px;
-    left: 50%;
-}
-```
-
-Then try this to center the box:
-
-`left:calc(50% - 100px);`
-
-```js
-<script>
-(function() {
-	$('header h2').on('click', function() {
-		$('.betainfo').toggle();
-		$('.betainfo').fadeToggle();
-	});
-})();
-</script>
-```
-
-```js
-$('header h2').on('hover', function() {
-console.log('Hello World!');
-```
-
 
 
 
