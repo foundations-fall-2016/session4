@@ -22,18 +22,15 @@ body {
    margin: 0 auto;
    margin-top: 24px;
 } 
-article {
+article, aside {
 	float: left;
 	width : 50%;
 	padding : 16px;
 }
-
-aside { 
-	float : left;
-	width : 50%;
-	padding : 16px; 
-}
 ```
+
+Note the use of margin on the body element. Add `box-sizing: border-box;` to the article / aside rule.
+
 Note the footer. Because both columns have been floated it can wrap.
 
 ```css
