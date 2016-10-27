@@ -490,14 +490,13 @@ Flexbox [the basics](https://css-tricks.com/snippets/css/a-guide-to-flexbox/).
 
 ##Use SVG for the Burst Graphic
 
-
 ##JavaScript Beta Window
 
 Build the window:
 
 ```html
 <div class="betainfo">
-<p>Information about the beta program.<p>
+	<p>Information about the beta program.<p>
 </div>
 ```
 
@@ -536,15 +535,9 @@ Try this in the head first then before the closing of the page:
 </script>
 ```
 
-Short form:
+Examine the html in the inspector.
 
-```html
-<script>
-	$('.betainfo p').addClass('emphasis');
-</script>
-```
-
-This version would work in the header:
+Note: this version would work in the header:
 
 ```js
 <script>
@@ -554,9 +547,19 @@ $(document).ready(function() {
 </script>
 ```
 
+All of jQuery's methods are documented at [http://api.jquery.com](http://api.jquery.com)
+
+Short form:
+
+```html
+<script>
+	$('.betainfo p').addClass('emphasis');
+</script>
+```
+
 ```js
 <script>
-	$('.betainfo p').on('click', 
+	$('.betainfo p').click( 
 		function() {
 			alert('test');
 		}
@@ -567,20 +570,22 @@ $(document).ready(function() {
 
 ```js
 <script>
-	$('.betainfo p').on('click', 
+	$('.betainfo p').click(
 		function() {
 			console.log('test');
 		}
-	);
+	);s
 </script>
 ```
 
 
 ```js
 <script>
-	$('.betainfo p').on('click', function() {
-		$(this).toggleClass('emphasis');
-	});
+	$('.betainfo p').click( 
+		function() {
+			$(this).toggleClass('emphasis');
+		}
+	);
 </script>
 ```
 
@@ -588,22 +593,67 @@ add `display: none;` to the `.betainfo` rule.
 
 ```js
 <script>
-	$('header a').on('click', function() {
-		$('.betainfo').toggle();
-	});
+	$('header a').click( 
+		function() {
+			$('.betainfo').toggle();
+		}
+	);
 </script>
 ```
 
 ```js
 <script>
-	$('header a').on('click', function() {
+	$('header a').click( 
+		function() {
+			$('.betainfo').fadeToggle();
+		}
+	);
+</script>
+```
+
+Add html to the betainfo:
+
+```html
+<div class="betainfo">
+	<p>Information about the beta program.<p>
+	<div class="closer"><a href="#0">X</a></div>
+</div>
+```
+
+Style it:
+
+```css
+.closer {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: #fff;
+    border: 2px solid #EABC5A;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 1.5rem;
+    font-weight: bold;
+}
+```
+
+Add a selector to the script:
+
+```js
+<script>
+$('header a, .betainfo div a').click( 
+	function() {
 		$('.betainfo').fadeToggle();
-	});
+	}
+);
 </script>
 ```
 
 
 ###CSS Starburst
+
+```
 <body>
 <div class="rect-container">
 <div class="rect copy">Beta!</div>
@@ -612,7 +662,10 @@ add `display: none;` to the `.betainfo` rule.
 <div class="rect three"> </div>
 </div>
 </body>
+```
 add styles
+
+```
 <style>
 .copy {
     color: #fff;
