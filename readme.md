@@ -572,6 +572,13 @@ Try this in the head first then before the closing of the page:
 	jQuery('.betainfo p').addClass('emphasis');
 </script>
 ```
+Short form:
+
+```html
+<script>
+	$('.betainfo p').addClass('emphasis');
+</script>
+```
 
 Examine the html in the inspector.
 
@@ -587,13 +594,7 @@ $(document).ready(function() {
 
 All of jQuery's methods are documented at [http://api.jquery.com](http://api.jquery.com)
 
-Short form:
-
-```html
-<script>
-	$('.betainfo p').addClass('emphasis');
-</script>
-```
+Adding a click event requires a function:
 
 ```js
 <script>
@@ -605,6 +606,7 @@ Short form:
 </script>
 ```
 
+You can send messages to the inspector's console:
 
 ```js
 <script>
@@ -616,6 +618,7 @@ Short form:
 </script>
 ```
 
+Let's use the `this` keyword to target the thing that was clicked on. We use toggleClass to add and remove the class:
 
 ```js
 <script>
@@ -627,7 +630,7 @@ Short form:
 </script>
 ```
 
-add `display: none;` to the `.betainfo` rule.
+Add `display: none;` to the `.betainfo` css rule:
 
 ```js
 <script>
@@ -639,6 +642,8 @@ add `display: none;` to the `.betainfo` rule.
 </script>
 ```
 
+Change to fadeToggle and note the animation running in the inspector:
+
 ```js
 <script>
 	$('header a').click( 
@@ -649,12 +654,14 @@ add `display: none;` to the `.betainfo` rule.
 </script>
 ```
 
+###Another Close Method
+
 Add html to the betainfo:
 
 ```html
 <div class="betainfo">
 	<p>Information about the beta program.<p>
-	<div class="closer"><a href="#0">X</a></div>
+	<a class="closer" href="#0">X</a>
 </div>
 ```
 
