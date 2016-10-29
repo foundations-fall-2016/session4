@@ -1,5 +1,9 @@
 #FOUNDATIONS session 4
 
+Midterm files are located [here](http://daniel.deverell.com/css-files/_midterm-files.zip).
+
+http://daniel.deverell.com/css-files/_midterm-files.zip
+
 ##Basilica
 
 Examine code with regards to the [recipe schema](https://schema.org/Recipe) at [schema.org](http://schema.org/docs/gs.html). Here is an [example on the food network](http://www.foodnetwork.com/recipes/food-network-kitchens/basil-pesto-recipe2.html) page that uses the recipe schema.
@@ -513,6 +517,10 @@ CHange the column widths, remove the background image and add coloring css:
 ```
 
 ##Homework
+
+Midterm files are located [here](http://daniel.deverell.com/css-files/_midterm-files.zip).
+
+http://daniel.deverell.com/css-files/_midterm-files.zip
 
 1. Create a small screen version of the page using media queries and a new breakpoint for smaller screens (540px). Pay attention to the header in portrait mode. Try re-implementing the basil image as a branding element.
 
