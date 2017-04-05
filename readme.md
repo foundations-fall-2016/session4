@@ -10,11 +10,8 @@
 * [JavaScript for Web Designers](https://abookapart.com/products/javascript-for-web-designers) - finish it
 * [SASS for Web Designers](https://abookapart.com/products/sass-for-web-designers) - begin reading
 
-Midterm files are located [here](http://daniel.deverell.com/css-files/_midterm-files.zip).
 
-http://daniel.deverell.com/css-files/_midterm-files.zip
-
-##Basilica
+## Basilica
 
 Examine code with regards to the [recipe schema](https://schema.org/Recipe) at [schema.org](http://schema.org/docs/gs.html). Here is an [example on the food network](http://www.foodnetwork.com/recipes/food-network-kitchens/basil-pesto-recipe2.html) page that uses the recipe schema.
 
@@ -55,7 +52,7 @@ footer {
 }
 ```
 
-###Faux columns
+### Faux columns
 
 Since the two columns can be of different heights and our design calls for two columns of a different color we can not color the aside and article divs. We'll use a very old technique for the moment and change it later.
 
@@ -75,7 +72,7 @@ Note that we cannot see the background image. The content div has collapsed beca
 
 Here we will use the clear fix method. 
 
-###::Pseudo-elements vs :Pseudo-classes
+### ::Pseudo-elements vs :Pseudo-classes
 
 ```
 ::first-letter		:hover
@@ -108,7 +105,7 @@ Print oupt (with media query)
 }
 ```
 
-###Clearfix
+### Clearfix
 
 ```css
 .content:after { 
@@ -139,7 +136,7 @@ Update the method to something shorter and more modern and apply the cf classnam
 
 Examine the html in the inspector. Look for `::before` and `::after`. We'll return to the :before and :after pseudo-classes later.
 
-##The Branding Header
+## The Branding Header
 
 Add the green background to the branding div.
 
@@ -240,7 +237,7 @@ Note: the absolute positioning on the beta link is creating a horizontal scrollb
 
 Change to `right: 10px;`.
 
-##Mobile First Approach
+## Mobile First Approach
 
 Analysis in the device view indicates a horizontal scroll due to a combination of settings. Comment out the offenders:
 
@@ -289,7 +286,7 @@ article, aside {
 }
 ```
 
-###Header Branding
+### Header Branding
 
 Small screen:
 
@@ -331,7 +328,7 @@ Large screen:
 }
 ```
 
-###Navigation
+### Navigation
 
 ```css
 nav {
@@ -404,7 +401,7 @@ nav p {
 
 ```
 
-###Flexbox
+### Flexbox
 
 Flexbox [the basics](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). 
 
@@ -434,7 +431,7 @@ nav p {
 
 ```
 
-###Format Content
+### Format Content
 
 ```css
 h2, h3 {
@@ -486,7 +483,7 @@ footer {
 }
 ```
 
-##Flex columns
+## Flex columns
 
 Refactor the article and aside columns to use flexbox. (Applies only to widescreen view.)
 
@@ -526,26 +523,15 @@ CHange the column widths, remove the background image and add coloring css:
 }
 ```
 
-##Homework
+## NOTES
 
-Midterm files are located [here](http://daniel.deverell.com/css-files/_midterm-files.zip).
-
-http://daniel.deverell.com/css-files/_midterm-files.zip
-
-1. Create a small screen version of the page using media queries and a new breakpoint for smaller screens (540px). Pay attention to the header in portrait mode. Try re-implementing the basil image as a branding element.
-
-##Reading
-Flexbox [the basics](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). 
-
-##NOTES
-
-##Add an Image to the layout
+## Add an Image to the layout
 
 
 
-##Use SVG for the Burst Graphic
+## Use SVG for the Burst Graphic
 
-##JavaScript Beta Window
+## JavaScript Beta Window
 
 Build the window:
 
@@ -672,7 +658,7 @@ Change to fadeToggle and note the animation running in the inspector:
 </script>
 ```
 
-###Another Close Method
+### Another Close Method
 
 Add html to the betainfo:
 
@@ -713,7 +699,7 @@ $('header a, .betainfo div a').click(
 </script>
 ```
 
-###Fade the Background
+### Fade the Background
 
 See [this article](http://tympanus.net/codrops/2013/11/07/css-overlay-techniques/) for additional techniques.
 
@@ -746,7 +732,7 @@ $('header a, .betainfo div a').click(
 ```
 
 
-###CSS Starburst
+### CSS Starburst
 
 ```
 <body>
@@ -796,7 +782,7 @@ add styles
 
 
 
-###Tap Highlight Color
+### Tap Highlight Color
 
 
 
