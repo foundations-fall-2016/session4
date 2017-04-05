@@ -1,4 +1,14 @@
-#FOUNDATIONS session 4
+# Front End Foundations Session Four
+
+## Homework
+
+1. Midterm files are located [here](http://daniel.deverell.com/css-files/_midterm-files.zip). http://daniel.deverell.com/css-files/_midterm-files.zip. You need select one layout from the samples,  write HTML for the content (.txt files are provided for convenience), and create CSS to match the layout. 
+
+
+## Reading 
+
+* [JavaScript for Web Designers](https://abookapart.com/products/javascript-for-web-designers) - finish it
+* [SASS for Web Designers](https://abookapart.com/products/sass-for-web-designers) - begin reading
 
 ##Basilica
 
