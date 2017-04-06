@@ -2,7 +2,8 @@
 
 ## Homework
 
-1. Midterm files are located [here](http://daniel.deverell.com/css-files/_midterm-files.zip). http://daniel.deverell.com/css-files/_midterm-files.zip. You need select one layout from the samples,  write HTML for the content (.txt files are provided for convenience), and create CSS to match the layout. 
+1. Midterm time! Files are located [here](http://daniel.deverell.com/css-files/_midterm-files.zip). http://daniel.deverell.com/css-files/_midterm-files.zip. You need select one layout from the samples,  write HTML for the content (.txt files are provided for convenience), and create CSS to match the layout. Be sure to use `white-space: pre;` for the poetry where appropriate.
+2. Style the popover and create close using methods similar to class 2 (a 'X' close button). Add an overlay that can also be clicked on to dismiss the popover.
 
 
 ## Reading 
@@ -358,10 +359,10 @@ The foundation for responsive design is not media queries but a flexible layout 
 
 In order to use percentages we rely on the non-additive box-sizing: border-box method:
 
-```css
+```
 * {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 ```
