@@ -428,6 +428,8 @@ And then use padding as opposed to margins - which are not part of the box model
 
 ## Basilica
 
+`$ npm run start`
+
 Examine code with regards to the [recipe schema](https://schema.org/Recipe) at [schema.org](http://schema.org/docs/gs.html). Here is an [example on the food network](http://www.foodnetwork.com/recipes/food-network-kitchens/basil-pesto-recipe2.html) page that uses the recipe schema.
 
 Note the `<abbr>` tag and the absence of a wrapper div (even though the design shows a centered document). The document contains 2 script tags. Examine the page in the browser's dev tools. Note the console message and the classes applied to the html tag.
@@ -510,7 +512,7 @@ e.g.: Selected text:
 }
 ```
 
-Print oupt (with media query)
+Print out (with media query)
 
 ```
 @media print {
@@ -522,7 +524,17 @@ Print oupt (with media query)
 
 ### Clearfix
 
-```css
+_Disable the float:left rule on the content._
+
+```
+.content:after { 
+    content:"boo"; 
+    display:block; 
+    clear:both; 
+}
+```
+
+```
 .content:after { 
     content:"."; 
     display:block; 
@@ -584,13 +596,11 @@ header h1 {
 }
 ```
 
-Since the absolute positioning technique is complex let's use something a little different:
+The absolute positioning technique is complex, let's use an alternative:
 
 ```css
 header h1 {
     transform: translateY(-80px) translateX(-100px);
-    padding-left: 260px;
-    padding-top: 90px;
     ...
 }
 ```
@@ -620,19 +630,21 @@ But given our design if might be better to absolutely position the beta element.
 ```css
 header a.beta {
     background: url("img/beta.png") no-repeat;
-    color:#fff;
+    color: #fff;
     font-size: 1.5rem;
     position: absolute; 
     z-index: 300;
-    top:-20px;
-    right:-10px;
-    width:85px;
-    height:85px;
-    line-height:85px;
-    text-align:center;
+    top: -20px;
+    right: 10px;
+    width: 85px;
+    height: 85px;
+    line-height: 85px;
+    text-align: center;
     text-transform: uppercase;
 }
 ```
+
+Whew!
 
 ```css
 header a.beta {
@@ -647,10 +659,6 @@ header a.beta:hover {
     transform: rotate(0deg) scale(1.2);
 }
 ```
-
-Note: the absolute positioning on the beta link is creating a horizontal scrollbar. 
-
-Change to `right: 10px;`.
 
 ## Mobile First Approach
 
@@ -883,6 +891,7 @@ Animate Links
     transition-timing-function: linear;
 }
 ```
+
 or `transition: color 0.2s linear;`
 
 
@@ -1135,7 +1144,7 @@ Create a new div in the html:
 ```
 Add the overlay to the [fadeToggle](http://api.jquery.com/fadeToggle/):
 
-```js
+```
 <script>
 $('header a, .betainfo div a').click( 
     function() {
@@ -1158,6 +1167,7 @@ $('header a, .betainfo div a').click(
 </div>
 </body>
 ```
+
 add styles
 
 ```
@@ -1193,6 +1203,7 @@ add styles
 .three { -webkit-transform: rotate(60deg) }
 
 </style>
+```
 
 
 
