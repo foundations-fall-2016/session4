@@ -424,22 +424,43 @@ And then use padding as opposed to margins - which are not part of the box model
 ```
 
 
-<!-- ## JS
+## JS
 
-Add links to the hi-res images for ALL the thumbnails:
+Create a popover div 
+
+```
+<div class="popover">
+    <img src="img/1-lg.jpg" />
+</div>
+```
+
+Create styles for it:
+
+```
+.popover {
+    position: absolute;
+    top: 30%;
+    display: none;
+}
+.showme {
+    display: block;
+}
+```
+
+Add links to the hi-res images for ALL the thumbnails, e.g.:
 
 ```
 <dd><a href="img/1-lg.jpg"><img src="img/1.jpg" title="Tuna roll" alt="Tuna Roll"></a></dd>
 ```
 
-Select one of the links
+Select one of the links:
 
 ```
 var linkedImage = document.querySelector('a')
 console.log(linkedImage)
 ```
 
-Select all of the links:
+Edit to select ALL of the links:
 
 ```
 var linkedImages = document.querySelectorAll('a')
@@ -451,16 +472,52 @@ use `.forEach` to attach an event listener to each link:
 ```
 var linkedImages = document.querySelectorAll('a')
 var imageLinks = [...linkedImages]
-imageLinks.forEach(addEventListener('click', run))
+imageLinks.forEach( imageLink => imageLink.addEventListener('click', run))
 
 function run() {
-  event.preventDefault();
+event.preventDefault();
 }
-``` -->
+```
+
+Now we need to create a reference to the popover:
+
+```
+var popover = document.querySelector('.popover')
+var popoverImage = popover.querySelector('.popover img')
+```
+
+Note the second line where we use popover.querySelector instead of document.querySelector.
+
+Change the src attribute for the popoverImage _and_ toggle the showme class on the popover:
+
+```
+function run() {
+    popoverImage.setAttribute('src', this.href)
+    popover.classList.toggle('showme')
+    event.preventDefault();
+}
+```
+
+Here is the entire JavaScript:
+
+```
+var popover = document.querySelector('.popover')
+var popoverImage = popover.querySelector('.popover img')
+
+var linkedImages = document.querySelectorAll('a')
+var imageLinks = [...linkedImages]
+imageLinks.forEach( imageLink => imageLink.addEventListener('click', run))
+
+function run() {
+    popoverImage.setAttribute('src', this.href)
+    popover.classList.toggle('showme')
+    event.preventDefault();
+}
+```
 
 
 
-## Basilica
+## Basilica (start if time permits)
 
 `$ npm run start`
 
