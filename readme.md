@@ -433,7 +433,7 @@ Examine code with regards to the [recipe schema](https://schema.org/Recipe) at [
 Note the `<abbr>` tag and the absence of a wrapper div (even though the design shows a centered document). The document contains 2 script tags. Examine the page in the browser's dev tools. Note the console message and the classes applied to the html tag.
 
 
-![Image of Basilica](https://github.com/foundations-fall-2016/session4/blob/master/FINAL.png)
+![Image of Basilica](FINAL.png)
 
 
 ```css
@@ -942,8 +942,6 @@ Change the column widths, remove the background image and add coloring css:
 
 ## Add an Image to the layout
 
-
-
 ## Use SVG for the Burst Graphic
 
 ## JavaScript Beta Window
@@ -991,6 +989,7 @@ Try this in the head first then before the closing of the page:
     jQuery('.betainfo p').addClass('emphasis');
 </script>
 ```
+
 Short form:
 
 ```html
@@ -1003,7 +1002,7 @@ Examine the html in the inspector.
 
 Note: this version would work in the header:
 
-```js
+```
 <script>
 $(document).ready(function() {
     $('.betainfo p').addClass('emphasis');
@@ -1015,7 +1014,7 @@ All of jQuery's methods are documented at [http://api.jquery.com](http://api.jqu
 
 Adding a click event requires a function:
 
-```js
+```
 <script>
     $('.betainfo p').click( 
         function() {
@@ -1027,7 +1026,7 @@ Adding a click event requires a function:
 
 You can send messages to the inspector's console:
 
-```js
+```
 <script>
     $('.betainfo p').click(
         function() {
@@ -1039,7 +1038,7 @@ You can send messages to the inspector's console:
 
 Let's use the `this` keyword to target the thing that was clicked on. We use toggleClass to add and remove the class:
 
-```js
+```
 <script>
     $('.betainfo p').click( 
         function() {
@@ -1051,7 +1050,7 @@ Let's use the `this` keyword to target the thing that was clicked on. We use tog
 
 Add `display: none;` to the `.betainfo` css rule:
 
-```js
+```
 <script>
     $('header a').click( 
         function() {
@@ -1063,7 +1062,7 @@ Add `display: none;` to the `.betainfo` css rule:
 
 Change to fadeToggle and note the animation running in the inspector:
 
-```js
+```
 <script>
     $('header a').click( 
         function() {
@@ -1104,7 +1103,7 @@ Style it:
 
 Add a selector to the script:
 
-```js
+```
 <script>
 $('header a, .betainfo div a').click( 
     function() {
@@ -1136,7 +1135,7 @@ Create a new div in the html:
 ```
 Add the overlay to the [fadeToggle](http://api.jquery.com/fadeToggle/):
 
-```js
+```
 <script>
 $('header a, .betainfo div a').click( 
     function() {
@@ -1159,6 +1158,7 @@ $('header a, .betainfo div a').click(
 </div>
 </body>
 ```
+
 add styles
 
 ```
@@ -1194,29 +1194,11 @@ add styles
 .three { -webkit-transform: rotate(60deg) }
 
 </style>
+```
 
 
 
 ### Tap Highlight Color
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
