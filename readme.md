@@ -32,35 +32,56 @@ Go to http://localhost:9001 in your browser
 
 Examine the Terminal to see activity.
 
-ctrl-c to stop the Python server.
+Multiple Terminal tabs. ctrl-c to stop the Python server.
 
-## Node
+## Node Package Manager
+
+Warning - this is going to seem like a lot but this system is an essential part of web design. 
 
 Download and install [Node](https://nodejs.org/en/)
 
-NPM - [Node Package Manager](https://www.npmjs.com)
+NPM - [Node Package Manager](https://www.npmjs.com) - not unlike Package Control for Sublime text but much more powerful.
 
 ```
+$ cd <session-4> // or copy and paste the folder you want to go to
 $ npm init
-$ cd <session-4> // copy and paste the folder you want to go to
 $ npm install browser-sync --save
 ```
 
-Note the modules folder
+Note package.json and node_modules folder
 
 [Browser Sync](https://www.browsersync.io) 
-[Documentation](https://browsersync.io/docs)
-[Github Repo](https://github.com/BrowserSync/browser-sync)
 
 ```
   "scripts": {
-    "start": "browser-sync start --browser \"google chrome\" --server 'app' --files 'app'"
+    "start": "browser-sync start --server 'app' --files 'app'"
   },
 ```
+
+```
+$ npm run start
+```
+
+Review browser Sync @ 3001
+
+[Documentation](https://browsersync.io/docs)
+[Github Repo](https://github.com/BrowserSync/browser-sync)
+
+Demo `npm install` on `dev` branch
+
+```
+  "scripts": {
+    "start": "browser-sync start --browser \"google chrome\" --server 'app' --files 'app'",
+    "startUp": "browser-sync start --browser \"google chrome\" --server 'definition-list' --files 'definition-list'"
+  },
+```
+
 
 ## Definition List Styling
 
 [Here is a summary](http://www.w3schools.com/html/html_lists.asp) of the different types of lists in HTML. And [an article](http://maxdesign.com.au/articles/definition/) specifically on definition lists.
+
+![Sample image](definition-list/final.png)
 
 Examine the html in the browser.
 
@@ -74,7 +95,7 @@ Add:
 
 ```
 .menu-list dl {
-    margin:10px 20px; 
+    margin:20px; 
 }
 ```
 
@@ -167,7 +188,7 @@ Float the menu-list container the prevent collapsing.
 
 After reviewing the final.png design we can see we need to add borders and space to the right of the image with a margin.
 
-```css
+```
 .menu-list img {
     ...
     margin: 0 8px 0 0;
@@ -176,7 +197,6 @@ After reviewing the final.png design we can see we need to add borders and space
     border-bottom-color: #c8cdd2;
     border-right-color: #c8cdd2;
     background: #fff;
-    }
 ```
 
 The layout breaks. The problem is with the `<dt>`'s widths. 
@@ -192,7 +212,7 @@ Change the spacing for the `<dt>`s by subtracting 18px.
 }
 ```
 
-Add additional text (in Sublime: `command-shift p / lorem` or `lorem + tab`) to the first dt to examine the behavior when text wraps.
+Add additional text (in Sublime: `command-shift p / lorem` or `lorem + tab`) to the spicy tuna roll text to examine the behavior when text wraps.
 
 To prevent text from wrapping under the images add a left margin of 98px to the second `<dd>` element.
 
@@ -257,11 +277,12 @@ Or use rgba.
 
 `box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);`
 
-### Replacing the bg Image
+#### Replacing the bg Image
+
+The problem with using the background image is that the width of the layout needs to be fixed.
 
 ```
-border-image:
-      linear-gradient(to bottom, black, rgba(0, 0, 0, 0)) 1 100%;
+border-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0)) 1 100%;
 ```
 
 Removing the background image and replacing it with CSS is difficult here but worthwhile since it allows us to use the component at any width and height we need.
@@ -283,9 +304,9 @@ Note the use of border-image below:
 
 See [this article](https://css-tricks.com/examples/GradientBorder/) for more examples of fancy border effects (the vendor prefixes - `-webkit-` etc.` - are not really necessary at this point).
 
+Set the width property to `min-width: 304px; `
 
-
-## Box Model - Border Box
+<!-- ## Box Model - Border Box
 
 Working with the alternate box model in version-2-fluid.
 
@@ -327,50 +348,80 @@ No scrolling.
     width: calc(100% - 98px);
 }
 ```
+ -->
 
+## (Un)Responsive Design - Just the Basics
 
-## Responsive Design - Just the Basics
+### No Media Queries
 
-### Media Query
+The foundation for responsive design is not media queries but a flexible layout that uses percentages.
 
-* print
+In order to use percentages we rely on the non-additive box-sizing: border-box method:
 
 ```css
-@media print {
-    img {
-        display: none;
-    }
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
 }
 ```
 
-* screen
+And then use padding as opposed to margins - which are not part of the box model - to achieve our goals. (Note: remove the alternating layout.)
 
-Use the width of the browser to change the view.
-
-```css
-@media screen and (min-width: 304px){
-    .menu-list {
-        background: #eee;
-        color: #000; 
-    }
+```
+.menu-list {
+    padding: 10px;
+    float: left;
+    min-width:304px; 
+    border-width: 4px 4px 0 4px;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-image: linear-gradient(to bottom, rgb(200, 205, 210), rgba(0, 0, 0, 0)) 1 100%;
+    background: linear-gradient(to bottom, rgba(200, 205, 210,1) 0%, rgba(200, 205, 210,1) 1%, rgba(240,240,240,0.4) 1.5%, rgba(240,240,240,0) 100%);
 }
-@media screen and (min-width: 620px){
-    .menu-list {
-        background: #333;
-        color: #fff;
-    }
+
+.menu-list dl {
+    float: left;
+    width: 100%;
+    clear: both;
+    padding: 12px;
+}
+
+.menu-list dt {
+    letter-spacing: 1px; 
+    color: #627081; 
+    float: right;
+    width:80%;
+    padding-bottom: 6px;
+}
+
+.menu-list dt + dd {
+    width: 20%;
+    padding-right: 12px;
+}
+
+.menu-list dd {
+    font-size: 0.875em;
+    line-height: 1.6; 
+    color: #666; 
+}
+
+.menu-list dd + dd {
+    float: right;
+    width: 80%;
+}
+
+.menu-list img {
+    width: 100%;
+    float:left;
+    padding: 4px;
+    border: 1px solid #d9e0e6;
+    border-bottom-color: #c8cdd2;
+    border-right-color: #c8cdd2;
+    background: #fff;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 ```
-
-### The meta tag
-
-Use Chrome's toggle device toolbar feature and choose a device.
-
-Note the absence of scaling.
-
-Add the [viewport meta](http://www.w3schools.com/Css/css_rwd_viewport.asp) tag to the head region of the html page and refresh:
-
-`<meta name="viewport" content="width=device-width, initial-scale=1.0">`
 
 
 
@@ -398,9 +449,9 @@ body {
    margin-top: 24px;
 } 
 article, aside {
-	float: left;
-	width : 50%;
-	padding : 16px;
+    float: left;
+    width : 50%;
+    padding : 16px;
 }
 ```
 
@@ -439,12 +490,12 @@ Here we will use the clear fix method.
 ### ::Pseudo-elements vs :Pseudo-classes
 
 ```
-::first-letter		:hover
-::first-line		:visited
-::before			:link
-::after				:active
-::selection			:target
-					:focus
+::first-letter      :hover
+::first-line        :visited
+::before            :link
+::after             :active
+::selection         :target
+                    :focus
 ```
 
 [Ideas](https://css-tricks.com/pseudo-element-roundup/) for using pseudo-elements.
@@ -453,9 +504,9 @@ e.g.: Selected text:
 
 ```
 ::selection { 
-	background:#88A308; 
-	color:#fff; 
-	text-shadow: none; 
+    background:#88A308; 
+    color:#fff; 
+    text-shadow: none; 
 }
 ```
 
@@ -473,11 +524,11 @@ Print oupt (with media query)
 
 ```css
 .content:after { 
-	content:"."; 
-	display:block; 
-	height:0; 
-	clear:both; 
-	visibility:hidden; 
+    content:"."; 
+    display:block; 
+    height:0; 
+    clear:both; 
+    visibility:hidden; 
 }
 ```
 
@@ -506,10 +557,10 @@ Add the green background to the branding div.
 
 ```css
 header {
-	position: relative;
-	height: 120px;
-	background: #88a308;
-	border-radius: 8px 8px 0px 0px;
+    position: relative;
+    height: 120px;
+    background: #88a308;
+    border-radius: 8px 8px 0px 0px;
 }
 ```
 
@@ -519,17 +570,17 @@ Add absolute positioning and create a viewable area for the image on the `<h1>`.
 
 ```css
 header h1 { 
-	position: absolute; 
-	top: -80px; 
-	left:-100px;
-	z-index: 90;
-	padding-left: 260px;
-	padding-top: 90px;
-	background: url(img/basil.png) no-repeat;
-	font-family: FuturaStdLight, sans-serif; 
-	font-weight: normal;
-	color:#fff;
-	font-size: 5rem;
+    position: absolute; 
+    top: -80px; 
+    left:-100px;
+    z-index: 90;
+    padding-left: 260px;
+    padding-top: 90px;
+    background: url(img/basil.png) no-repeat;
+    font-family: FuturaStdLight, sans-serif; 
+    font-weight: normal;
+    color:#fff;
+    font-size: 5rem;
 }
 ```
 
@@ -538,9 +589,9 @@ Since the absolute positioning technique is complex let's use something a little
 ```css
 header h1 {
     transform: translateY(-80px) translateX(-100px);
-	padding-left: 260px;
-	padding-top: 90px;
-	...
+    padding-left: 260px;
+    padding-top: 90px;
+    ...
 }
 ```
 
@@ -548,8 +599,8 @@ Note:
 
 ```html
 <header>
-	<h1>Basilica!</h1>
-	<a class="beta" href="#">Beta</a>
+    <h1>Basilica!</h1>
+    <a class="beta" href="#">Beta</a>
 </header>
 ```
 
@@ -568,32 +619,32 @@ But given our design if might be better to absolutely position the beta element.
 
 ```css
 header a.beta {
-	background: url("img/beta.png") no-repeat;
+    background: url("img/beta.png") no-repeat;
     color:#fff;
     font-size: 1.5rem;
-	position: absolute; 
-	z-index: 300;
-	top:-20px;
+    position: absolute; 
+    z-index: 300;
+    top:-20px;
     right:-10px;
-	width:85px;
-	height:85px;
+    width:85px;
+    height:85px;
     line-height:85px;
-	text-align:center;
-	text-transform: uppercase;
+    text-align:center;
+    text-transform: uppercase;
 }
 ```
 
 ```css
 header a.beta {
-	...
-	transform: rotate(20deg);
-	transition: all 1s ease;
+    ...
+    transform: rotate(20deg);
+    transition: all 1s ease;
 }
 ```
 
 ```css
 header a.beta:hover {
-	transform: rotate(0deg) scale(1.2);
+    transform: rotate(0deg) scale(1.2);
 }
 ```
 
@@ -608,13 +659,13 @@ Analysis in the device view indicates a horizontal scroll due to a combination o
 ```css
 header h1 {
     /*transform: translateY(-80px) translateX(-100px);
-	padding-left: 260px;
-	padding-top: 90px;*/
-	background: url(img/basil.png) no-repeat;
-	font-family: FuturaStdLight, sans-serif; 
-	font-weight: normal;
-	color:#fff;
-	/*font-size: 5rem;*/
+    padding-left: 260px;
+    padding-top: 90px;*/
+    background: url(img/basil.png) no-repeat;
+    font-family: FuturaStdLight, sans-serif; 
+    font-weight: normal;
+    color:#fff;
+    /*font-size: 5rem;*/
 }
 ```
 
@@ -676,9 +727,9 @@ Large screen:
 ```css
 @media only screen and (min-width: 768px) {
 
-	...
+    ...
 
-	header {
+    header {
         height: 120px;
     }
 
@@ -750,7 +801,7 @@ Button gradients
 
 ```css
 nav {
-	...
+    ...
     float: left;
     width: 100%;
 }
@@ -853,26 +904,26 @@ Refactor the article and aside columns to use flexbox. (Applies only to widescre
 
 Remove the float property and add flex:
 
-```css
+```
 @media only screen and (min-width: 768px) {
     ...
     .content {
     background: url('img/html.png') repeat-y 50% 50%;
     display: flex;
-	}
-	
-	article {}
-	
-	aside {}
+    }
+    
+    article {}
+    
+    aside {}
     ...
 }
 ```
 
-CHange the column widths, remove the background image and add coloring css:
+Change the column widths, remove the background image and add coloring css:
 
-```css
+```
 @media only screen and (min-width: 768px) {
-	...
+    ...
     .content {
         display: flex;
     }
@@ -901,7 +952,7 @@ Build the window:
 
 ```html
 <div class="betainfo">
-	<p>Information about the beta program.<p>
+    <p>Information about the beta program.<p>
 </div>
 ```
 
@@ -921,7 +972,7 @@ Build the window:
 }
 
 .emphasis {
-	color: red;
+    color: red;
 }
 ```
 
@@ -937,14 +988,14 @@ Try this in the head first then before the closing of the page:
 
 ```html
 <script>
-	jQuery('.betainfo p').addClass('emphasis');
+    jQuery('.betainfo p').addClass('emphasis');
 </script>
 ```
 Short form:
 
 ```html
 <script>
-	$('.betainfo p').addClass('emphasis');
+    $('.betainfo p').addClass('emphasis');
 </script>
 ```
 
@@ -955,7 +1006,7 @@ Note: this version would work in the header:
 ```js
 <script>
 $(document).ready(function() {
-	$('.betainfo p').addClass('emphasis');
+    $('.betainfo p').addClass('emphasis');
 });
 </script>
 ```
@@ -966,11 +1017,11 @@ Adding a click event requires a function:
 
 ```js
 <script>
-	$('.betainfo p').click( 
-		function() {
-			alert('test');
-		}
-	);
+    $('.betainfo p').click( 
+        function() {
+            alert('test');
+        }
+    );
 </script>
 ```
 
@@ -978,11 +1029,11 @@ You can send messages to the inspector's console:
 
 ```js
 <script>
-	$('.betainfo p').click(
-		function() {
-			console.log('test');
-		}
-	);s
+    $('.betainfo p').click(
+        function() {
+            console.log('test');
+        }
+    );s
 </script>
 ```
 
@@ -990,11 +1041,11 @@ Let's use the `this` keyword to target the thing that was clicked on. We use tog
 
 ```js
 <script>
-	$('.betainfo p').click( 
-		function() {
-			$(this).toggleClass('emphasis');
-		}
-	);
+    $('.betainfo p').click( 
+        function() {
+            $(this).toggleClass('emphasis');
+        }
+    );
 </script>
 ```
 
@@ -1002,11 +1053,11 @@ Add `display: none;` to the `.betainfo` css rule:
 
 ```js
 <script>
-	$('header a').click( 
-		function() {
-			$('.betainfo').toggle();
-		}
-	);
+    $('header a').click( 
+        function() {
+            $('.betainfo').toggle();
+        }
+    );
 </script>
 ```
 
@@ -1014,11 +1065,11 @@ Change to fadeToggle and note the animation running in the inspector:
 
 ```js
 <script>
-	$('header a').click( 
-		function() {
-			$('.betainfo').fadeToggle();
-		}
-	);
+    $('header a').click( 
+        function() {
+            $('.betainfo').fadeToggle();
+        }
+    );
 </script>
 ```
 
@@ -1028,8 +1079,8 @@ Add html to the betainfo:
 
 ```html
 <div class="betainfo">
-	<p>Information about the beta program.<p>
-	<a class="closer" href="#0">X</a>
+    <p>Information about the beta program.<p>
+    <a class="closer" href="#0">X</a>
 </div>
 ```
 
@@ -1056,9 +1107,9 @@ Add a selector to the script:
 ```js
 <script>
 $('header a, .betainfo div a').click( 
-	function() {
-		$('.betainfo').fadeToggle();
-	}
+    function() {
+        $('.betainfo').fadeToggle();
+    }
 );
 </script>
 ```
@@ -1088,9 +1139,9 @@ Add the overlay to the [fadeToggle](http://api.jquery.com/fadeToggle/):
 ```js
 <script>
 $('header a, .betainfo div a').click( 
-	function() {
-		$('.betainfo, .overlay').fadeToggle();
-	}
+    function() {
+        $('.betainfo, .overlay').fadeToggle();
+    }
 );
 </script>
 ```
