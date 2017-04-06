@@ -95,7 +95,7 @@ Add:
 
 ```
 .menu-list dl {
-    margin:10px 20px; 
+    margin:20px; 
 }
 ```
 
@@ -188,7 +188,7 @@ Float the menu-list container the prevent collapsing.
 
 After reviewing the final.png design we can see we need to add borders and space to the right of the image with a margin.
 
-```css
+```
 .menu-list img {
     ...
     margin: 0 8px 0 0;
@@ -197,7 +197,6 @@ After reviewing the final.png design we can see we need to add borders and space
     border-bottom-color: #c8cdd2;
     border-right-color: #c8cdd2;
     background: #fff;
-    }
 ```
 
 The layout breaks. The problem is with the `<dt>`'s widths. 
@@ -213,7 +212,7 @@ Change the spacing for the `<dt>`s by subtracting 18px.
 }
 ```
 
-Add additional text (in Sublime: `command-shift p / lorem` or `lorem + tab`) to the first dt to examine the behavior when text wraps.
+Add additional text (in Sublime: `command-shift p / lorem` or `lorem + tab`) to the spicy tuna roll text to examine the behavior when text wraps.
 
 To prevent text from wrapping under the images add a left margin of 98px to the second `<dd>` element.
 
@@ -280,9 +279,10 @@ Or use rgba.
 
 ### Replacing the bg Image
 
+The problem with using the background image is that the width of the layout needs to be fixed.
+
 ```
-border-image:
-      linear-gradient(to bottom, black, rgba(0, 0, 0, 0)) 1 100%;
+border-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0)) 1 100%;
 ```
 
 Removing the background image and replacing it with CSS is difficult here but worthwhile since it allows us to use the component at any width and height we need.
@@ -304,7 +304,7 @@ Note the use of border-image below:
 
 See [this article](https://css-tricks.com/examples/GradientBorder/) for more examples of fancy border effects (the vendor prefixes - `-webkit-` etc.` - are not really necessary at this point).
 
-
+Set the width property to `min-width:304px; `
 
 ## Box Model - Border Box
 
@@ -350,48 +350,78 @@ No scrolling.
 ```
 
 
-## Responsive Design - Just the Basics
+## (Un)Responsive Design - Just the Basics
 
-### Media Query
+### No Media Queries
 
-* print
+The foundation for responsive design is not media queries but a flexible layout.
+
+In order to use percentages we rely on the non-additive box-sizing: border-box method:
 
 ```css
-@media print {
-    img {
-        display: none;
-    }
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box !important;
 }
 ```
 
-* screen
+And then use padding - as opposed to margins which are not part of the box model - to achieve our goals. (Note: remove the alternating layout.)
 
-Use the width of the browser to change the view.
-
-```css
-@media screen and (min-width: 304px){
-    .menu-list {
-        background: #eee;
-        color: #000; 
-    }
+```
+.menu-list {
+    padding: 10px;
+    float: left;
+    min-width:304px; 
+    border-width: 4px 4px 0 4px;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-image: linear-gradient(to bottom, rgb(200, 205, 210), rgba(0, 0, 0, 0)) 1 100%;
+    background: linear-gradient(to bottom, rgba(200, 205, 210,1) 0%, rgba(200, 205, 210,1) 1%, rgba(240,240,240,0.4) 1.5%, rgba(240,240,240,0) 100%);
 }
-@media screen and (min-width: 620px){
-    .menu-list {
-        background: #333;
-        color: #fff;
-    }
+
+.menu-list dl {
+    float: left;
+    width: 100%;
+    clear: both;
+    padding: 12px;
+}
+
+.menu-list dt {
+    letter-spacing: 1px; 
+    color: #627081; 
+    float: right;
+    width:80%;
+    padding-bottom: 6px;
+}
+
+.menu-list dt + dd {
+    width: 20%;
+    padding-right: 12px;
+}
+
+.menu-list dd {
+    font-size: 0.875em;
+    line-height: 1.6; 
+    color: #666; 
+}
+
+.menu-list dd + dd {
+    float: right;
+    width: 80%;
+}
+
+.menu-list img {
+    width: 100%;
+    float:left;
+    padding: 4px;
+    border: 1px solid #d9e0e6;
+    border-bottom-color: #c8cdd2;
+    border-right-color: #c8cdd2;
+    background: #fff;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 ```
-
-### The meta tag
-
-Use Chrome's toggle device toolbar feature and choose a device.
-
-Note the absence of scaling.
-
-Add the [viewport meta](http://www.w3schools.com/Css/css_rwd_viewport.asp) tag to the head region of the html page and refresh:
-
-`<meta name="viewport" content="width=device-width, initial-scale=1.0">`
 
 
 
