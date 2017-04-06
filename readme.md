@@ -10,6 +10,50 @@
 * [JavaScript for Web Designers](https://abookapart.com/products/javascript-for-web-designers) - finish it
 * [SASS for Web Designers](https://abookapart.com/products/sass-for-web-designers) - begin reading
 
+## Terminal Basics
+
+* For Windows users - [CMDR](http://cmder.net)
+
+```
+$ cd <PATH> // copy and paste the folder you want to go to
+$ ls 
+$ pwd
+```
+
+```
+$ cd <definition-list>
+$ python -m SimpleHTTPServer 9001
+```
+
+Go to http://localhost:9001 in your browser
+
+Examine the Terminal
+
+ctrl-c to stop the Python server
+
+## Node
+
+Download and install [Node](https://nodejs.org/en/)
+
+NPM - [Node Package Manager](https://www.npmjs.com)
+
+```
+$ npm init
+$ cd <session-4> // copy and paste the folder you want to go to
+$ npm install browser-sync --save
+```
+
+Note the modules folder
+
+[Browser Sync](https://www.browsersync.io) 
+[Documentation](https://browsersync.io/docs)
+[Github Repo](https://github.com/BrowserSync/browser-sync)
+
+```
+  "scripts": {
+    "start": "browser-sync start --browser \"google chrome\" --server 'app' --files 'app'"
+  },
+```
 
 ## Basilica
 

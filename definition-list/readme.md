@@ -2,37 +2,15 @@
 
 [Here is a summary](http://www.w3schools.com/html/html_lists.asp) of the different types of lists in HTML. And [an article](http://maxdesign.com.au/articles/definition/) specifically on definition lists.
 
-Examine the html in the browser. 
-
-<!-- Note the use of `class="image"` on the `<dd>` elements containing image.  -->
+Examine the html in the browser.
 
 Review the default browser formatting for definition lists using the developer tools.
 
 ## The CSS
-Create a new `css` folder, create a new empty file within it and add the following CSS code.
 
-```
-* {
-	margin:0; 
-	padding:0;
-}
+Review existing CSS starter. Note the 300 pixel width and the 10px padding top and bottom.
 
-body {
-	font-family: Arial, Helvetica, sans-serif;
-	margin: 1em;
-	font-size: 100%;
-}
-
-.menu-list {
-	width:300px; 
-	border:2px solid #c8cdd2;
-	padding:10px 0;
-} 
-```
-
-And save it as styles.css into the new folder. Use `<link>` to add a reference to this file in the head of the html document and test in the browser.
-
-Note the 300 pixel width and the 10px padding top and bottom.
+Add:
 
 ```
 .menu-list dl {
@@ -40,7 +18,7 @@ Note the 300 pixel width and the 10px padding top and bottom.
 }
 ```
 
-Note the margins above. We apply left and right margins to the dl. If we were to add 20px padding to the menu-list it would increase the width of the element to 344px which, let's let's pretent for a moment, is not desirable. 
+Note the margins above. We apply left and right margins to the dl. If we were to add 20px padding to the menu-list it would increase the width of the element to 344px which, let's assume, is not desirable. 
 
 Let's tackle the definition terms `<dt>`.
 
@@ -61,7 +39,7 @@ Now apply some basic formatting to the definitions.
 }
 ```
 
-###The Floats
+### The Floats
 
 Allow the text to position itself next to image.
 
@@ -98,7 +76,7 @@ Now the images are sticking outside their parent `<dl>` container. We want the c
 
 We can use the same method we have already used - FNE float nearly everything (See Eric Meyer's old yet still [relevant article](http://bit.ly/GQD5MU) wherein it is written "a container will stretch to fit around floated elements within it if the container is also floated.")
 
-```css`
+```css
 .menu-list dl {
 	...
 	float:left;
