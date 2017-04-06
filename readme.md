@@ -430,7 +430,7 @@ And then use padding as opposed to margins - which are not part of the box model
 
 Examine code with regards to the [recipe schema](https://schema.org/Recipe) at [schema.org](http://schema.org/docs/gs.html). Here is an [example on the food network](http://www.foodnetwork.com/recipes/food-network-kitchens/basil-pesto-recipe2.html) page that uses the recipe schema.
 
-Note the `<abbr>` tag, the `role` attributes, and the absence of a wrapper div (even though the design shows a centered document). The document contains 2 script tags. Examine the page n the browser's dev tools. Note the console message and the classes applied to the html tag.
+Note the `<abbr>` tag and the absence of a wrapper div (even though the design shows a centered document). The document contains 2 script tags. Examine the page in the browser's dev tools. Note the console message and the classes applied to the html tag.
 
 
 ![Image of Basilica](https://github.com/foundations-fall-2016/session4/blob/master/FINAL.png)
