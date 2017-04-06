@@ -424,9 +424,45 @@ And then use padding as opposed to margins - which are not part of the box model
 ```
 
 
+<!-- ## JS
+
+Add links to the hi-res images for ALL the thumbnails:
+
+```
+<dd><a href="img/1-lg.jpg"><img src="img/1.jpg" title="Tuna roll" alt="Tuna Roll"></a></dd>
+```
+
+Select one of the links
+
+```
+var linkedImage = document.querySelector('a')
+console.log(linkedImage)
+```
+
+Select all of the links:
+
+```
+var linkedImages = document.querySelectorAll('a')
+console.log(linkedImages)
+```
+
+use `.forEach` to attach an event listener to each link:
+
+```
+var linkedImages = document.querySelectorAll('a')
+var imageLinks = [...linkedImages]
+imageLinks.forEach(addEventListener('click', run))
+
+function run() {
+  event.preventDefault();
+}
+``` -->
+
 
 
 ## Basilica
+
+`$ npm run start`
 
 Examine code with regards to the [recipe schema](https://schema.org/Recipe) at [schema.org](http://schema.org/docs/gs.html). Here is an [example on the food network](http://www.foodnetwork.com/recipes/food-network-kitchens/basil-pesto-recipe2.html) page that uses the recipe schema.
 
@@ -510,7 +546,7 @@ e.g.: Selected text:
 }
 ```
 
-Print oupt (with media query)
+Print out (with media query)
 
 ```
 @media print {
@@ -522,7 +558,17 @@ Print oupt (with media query)
 
 ### Clearfix
 
-```css
+_Disable the float:left rule on the content._
+
+```
+.content:after { 
+    content:"boo"; 
+    display:block; 
+    clear:both; 
+}
+```
+
+```
 .content:after { 
     content:"."; 
     display:block; 
@@ -584,13 +630,11 @@ header h1 {
 }
 ```
 
-Since the absolute positioning technique is complex let's use something a little different:
+The absolute positioning technique is complex, let's use an alternative:
 
 ```css
 header h1 {
     transform: translateY(-80px) translateX(-100px);
-    padding-left: 260px;
-    padding-top: 90px;
     ...
 }
 ```
@@ -620,19 +664,21 @@ But given our design if might be better to absolutely position the beta element.
 ```css
 header a.beta {
     background: url("img/beta.png") no-repeat;
-    color:#fff;
+    color: #fff;
     font-size: 1.5rem;
     position: absolute; 
     z-index: 300;
-    top:-20px;
-    right:-10px;
-    width:85px;
-    height:85px;
-    line-height:85px;
-    text-align:center;
+    top: -20px;
+    right: 10px;
+    width: 85px;
+    height: 85px;
+    line-height: 85px;
+    text-align: center;
     text-transform: uppercase;
 }
 ```
+
+Whew!
 
 ```css
 header a.beta {
@@ -647,10 +693,6 @@ header a.beta:hover {
     transform: rotate(0deg) scale(1.2);
 }
 ```
-
-Note: the absolute positioning on the beta link is creating a horizontal scrollbar. 
-
-Change to `right: 10px;`.
 
 ## Mobile First Approach
 
@@ -883,6 +925,7 @@ Animate Links
     transition-timing-function: linear;
 }
 ```
+
 or `transition: color 0.2s linear;`
 
 
