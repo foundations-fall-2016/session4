@@ -277,7 +277,7 @@ Or use rgba.
 
 `box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);`
 
-### Replacing the bg Image
+#### Replacing the bg Image
 
 The problem with using the background image is that the width of the layout needs to be fixed.
 
@@ -304,9 +304,9 @@ Note the use of border-image below:
 
 See [this article](https://css-tricks.com/examples/GradientBorder/) for more examples of fancy border effects (the vendor prefixes - `-webkit-` etc.` - are not really necessary at this point).
 
-Set the width property to `min-width:304px; `
+Set the width property to `min-width: 304px; `
 
-## Box Model - Border Box
+<!-- ## Box Model - Border Box
 
 Working with the alternate box model in version-2-fluid.
 
@@ -348,13 +348,13 @@ No scrolling.
     width: calc(100% - 98px);
 }
 ```
-
+ -->
 
 ## (Un)Responsive Design - Just the Basics
 
 ### No Media Queries
 
-The foundation for responsive design is not media queries but a flexible layout.
+The foundation for responsive design is not media queries but a flexible layout that uses percentages.
 
 In order to use percentages we rely on the non-additive box-sizing: border-box method:
 
@@ -362,11 +362,11 @@ In order to use percentages we rely on the non-additive box-sizing: border-box m
 * {
     margin:0;
     padding:0;
-    box-sizing: border-box !important;
+    box-sizing: border-box;
 }
 ```
 
-And then use padding - as opposed to margins which are not part of the box model - to achieve our goals. (Note: remove the alternating layout.)
+And then use padding as opposed to margins - which are not part of the box model - to achieve our goals. (Note: remove the alternating layout.)
 
 ```
 .menu-list {
@@ -430,10 +430,10 @@ And then use padding - as opposed to margins which are not part of the box model
 
 Examine code with regards to the [recipe schema](https://schema.org/Recipe) at [schema.org](http://schema.org/docs/gs.html). Here is an [example on the food network](http://www.foodnetwork.com/recipes/food-network-kitchens/basil-pesto-recipe2.html) page that uses the recipe schema.
 
-Note the `<abbr>` tag, the `role` attributes, and the absence of a wrapper div (even though the design shows a centered document). The document contains 2 script tags. Examine the page n the browser's dev tools. Note the console message and the classes applied to the html tag.
+Note the `<abbr>` tag and the absence of a wrapper div (even though the design shows a centered document). The document contains 2 script tags. Examine the page in the browser's dev tools. Note the console message and the classes applied to the html tag.
 
 
-![Image of Basilica](https://github.com/foundations-fall-2016/session4/blob/master/FINAL.png)
+![Image of Basilica](FINAL.png)
 
 
 ```css
@@ -449,9 +449,9 @@ body {
    margin-top: 24px;
 } 
 article, aside {
-	float: left;
-	width : 50%;
-	padding : 16px;
+    float: left;
+    width : 50%;
+    padding : 16px;
 }
 ```
 
@@ -490,12 +490,12 @@ Here we will use the clear fix method.
 ### ::Pseudo-elements vs :Pseudo-classes
 
 ```
-::first-letter		:hover
-::first-line		:visited
-::before			:link
-::after				:active
-::selection			:target
-					:focus
+::first-letter      :hover
+::first-line        :visited
+::before            :link
+::after             :active
+::selection         :target
+                    :focus
 ```
 
 [Ideas](https://css-tricks.com/pseudo-element-roundup/) for using pseudo-elements.
@@ -504,9 +504,9 @@ e.g.: Selected text:
 
 ```
 ::selection { 
-	background:#88A308; 
-	color:#fff; 
-	text-shadow: none; 
+    background:#88A308; 
+    color:#fff; 
+    text-shadow: none; 
 }
 ```
 
@@ -524,11 +524,11 @@ Print oupt (with media query)
 
 ```css
 .content:after { 
-	content:"."; 
-	display:block; 
-	height:0; 
-	clear:both; 
-	visibility:hidden; 
+    content:"."; 
+    display:block; 
+    height:0; 
+    clear:both; 
+    visibility:hidden; 
 }
 ```
 
@@ -557,10 +557,10 @@ Add the green background to the branding div.
 
 ```css
 header {
-	position: relative;
-	height: 120px;
-	background: #88a308;
-	border-radius: 8px 8px 0px 0px;
+    position: relative;
+    height: 120px;
+    background: #88a308;
+    border-radius: 8px 8px 0px 0px;
 }
 ```
 
@@ -570,17 +570,17 @@ Add absolute positioning and create a viewable area for the image on the `<h1>`.
 
 ```css
 header h1 { 
-	position: absolute; 
-	top: -80px; 
-	left:-100px;
-	z-index: 90;
-	padding-left: 260px;
-	padding-top: 90px;
-	background: url(img/basil.png) no-repeat;
-	font-family: FuturaStdLight, sans-serif; 
-	font-weight: normal;
-	color:#fff;
-	font-size: 5rem;
+    position: absolute; 
+    top: -80px; 
+    left:-100px;
+    z-index: 90;
+    padding-left: 260px;
+    padding-top: 90px;
+    background: url(img/basil.png) no-repeat;
+    font-family: FuturaStdLight, sans-serif; 
+    font-weight: normal;
+    color:#fff;
+    font-size: 5rem;
 }
 ```
 
@@ -589,9 +589,9 @@ Since the absolute positioning technique is complex let's use something a little
 ```css
 header h1 {
     transform: translateY(-80px) translateX(-100px);
-	padding-left: 260px;
-	padding-top: 90px;
-	...
+    padding-left: 260px;
+    padding-top: 90px;
+    ...
 }
 ```
 
@@ -599,8 +599,8 @@ Note:
 
 ```html
 <header>
-	<h1>Basilica!</h1>
-	<a class="beta" href="#">Beta</a>
+    <h1>Basilica!</h1>
+    <a class="beta" href="#">Beta</a>
 </header>
 ```
 
@@ -619,32 +619,32 @@ But given our design if might be better to absolutely position the beta element.
 
 ```css
 header a.beta {
-	background: url("img/beta.png") no-repeat;
+    background: url("img/beta.png") no-repeat;
     color:#fff;
     font-size: 1.5rem;
-	position: absolute; 
-	z-index: 300;
-	top:-20px;
+    position: absolute; 
+    z-index: 300;
+    top:-20px;
     right:-10px;
-	width:85px;
-	height:85px;
+    width:85px;
+    height:85px;
     line-height:85px;
-	text-align:center;
-	text-transform: uppercase;
+    text-align:center;
+    text-transform: uppercase;
 }
 ```
 
 ```css
 header a.beta {
-	...
-	transform: rotate(20deg);
-	transition: all 1s ease;
+    ...
+    transform: rotate(20deg);
+    transition: all 1s ease;
 }
 ```
 
 ```css
 header a.beta:hover {
-	transform: rotate(0deg) scale(1.2);
+    transform: rotate(0deg) scale(1.2);
 }
 ```
 
@@ -659,13 +659,13 @@ Analysis in the device view indicates a horizontal scroll due to a combination o
 ```css
 header h1 {
     /*transform: translateY(-80px) translateX(-100px);
-	padding-left: 260px;
-	padding-top: 90px;*/
-	background: url(img/basil.png) no-repeat;
-	font-family: FuturaStdLight, sans-serif; 
-	font-weight: normal;
-	color:#fff;
-	/*font-size: 5rem;*/
+    padding-left: 260px;
+    padding-top: 90px;*/
+    background: url(img/basil.png) no-repeat;
+    font-family: FuturaStdLight, sans-serif; 
+    font-weight: normal;
+    color:#fff;
+    /*font-size: 5rem;*/
 }
 ```
 
@@ -727,9 +727,9 @@ Large screen:
 ```css
 @media only screen and (min-width: 768px) {
 
-	...
+    ...
 
-	header {
+    header {
         height: 120px;
     }
 
@@ -801,7 +801,7 @@ Button gradients
 
 ```css
 nav {
-	...
+    ...
     float: left;
     width: 100%;
 }
@@ -904,26 +904,26 @@ Refactor the article and aside columns to use flexbox. (Applies only to widescre
 
 Remove the float property and add flex:
 
-```css
+```
 @media only screen and (min-width: 768px) {
     ...
     .content {
     background: url('img/html.png') repeat-y 50% 50%;
     display: flex;
-	}
-	
-	article {}
-	
-	aside {}
+    }
+    
+    article {}
+    
+    aside {}
     ...
 }
 ```
 
-CHange the column widths, remove the background image and add coloring css:
+Change the column widths, remove the background image and add coloring css:
 
-```css
+```
 @media only screen and (min-width: 768px) {
-	...
+    ...
     .content {
         display: flex;
     }
@@ -942,8 +942,6 @@ CHange the column widths, remove the background image and add coloring css:
 
 ## Add an Image to the layout
 
-
-
 ## Use SVG for the Burst Graphic
 
 ## JavaScript Beta Window
@@ -952,7 +950,7 @@ Build the window:
 
 ```html
 <div class="betainfo">
-	<p>Information about the beta program.<p>
+    <p>Information about the beta program.<p>
 </div>
 ```
 
@@ -972,7 +970,7 @@ Build the window:
 }
 
 .emphasis {
-	color: red;
+    color: red;
 }
 ```
 
@@ -988,14 +986,15 @@ Try this in the head first then before the closing of the page:
 
 ```html
 <script>
-	jQuery('.betainfo p').addClass('emphasis');
+    jQuery('.betainfo p').addClass('emphasis');
 </script>
 ```
+
 Short form:
 
 ```html
 <script>
-	$('.betainfo p').addClass('emphasis');
+    $('.betainfo p').addClass('emphasis');
 </script>
 ```
 
@@ -1003,10 +1002,10 @@ Examine the html in the inspector.
 
 Note: this version would work in the header:
 
-```js
+```
 <script>
 $(document).ready(function() {
-	$('.betainfo p').addClass('emphasis');
+    $('.betainfo p').addClass('emphasis');
 });
 </script>
 ```
@@ -1015,61 +1014,61 @@ All of jQuery's methods are documented at [http://api.jquery.com](http://api.jqu
 
 Adding a click event requires a function:
 
-```js
+```
 <script>
-	$('.betainfo p').click( 
-		function() {
-			alert('test');
-		}
-	);
+    $('.betainfo p').click( 
+        function() {
+            alert('test');
+        }
+    );
 </script>
 ```
 
 You can send messages to the inspector's console:
 
-```js
+```
 <script>
-	$('.betainfo p').click(
-		function() {
-			console.log('test');
-		}
-	);s
+    $('.betainfo p').click(
+        function() {
+            console.log('test');
+        }
+    );s
 </script>
 ```
 
 Let's use the `this` keyword to target the thing that was clicked on. We use toggleClass to add and remove the class:
 
-```js
+```
 <script>
-	$('.betainfo p').click( 
-		function() {
-			$(this).toggleClass('emphasis');
-		}
-	);
+    $('.betainfo p').click( 
+        function() {
+            $(this).toggleClass('emphasis');
+        }
+    );
 </script>
 ```
 
 Add `display: none;` to the `.betainfo` css rule:
 
-```js
+```
 <script>
-	$('header a').click( 
-		function() {
-			$('.betainfo').toggle();
-		}
-	);
+    $('header a').click( 
+        function() {
+            $('.betainfo').toggle();
+        }
+    );
 </script>
 ```
 
 Change to fadeToggle and note the animation running in the inspector:
 
-```js
+```
 <script>
-	$('header a').click( 
-		function() {
-			$('.betainfo').fadeToggle();
-		}
-	);
+    $('header a').click( 
+        function() {
+            $('.betainfo').fadeToggle();
+        }
+    );
 </script>
 ```
 
@@ -1079,8 +1078,8 @@ Add html to the betainfo:
 
 ```html
 <div class="betainfo">
-	<p>Information about the beta program.<p>
-	<a class="closer" href="#0">X</a>
+    <p>Information about the beta program.<p>
+    <a class="closer" href="#0">X</a>
 </div>
 ```
 
@@ -1104,12 +1103,12 @@ Style it:
 
 Add a selector to the script:
 
-```js
+```
 <script>
 $('header a, .betainfo div a').click( 
-	function() {
-		$('.betainfo').fadeToggle();
-	}
+    function() {
+        $('.betainfo').fadeToggle();
+    }
 );
 </script>
 ```
@@ -1139,9 +1138,9 @@ Add the overlay to the [fadeToggle](http://api.jquery.com/fadeToggle/):
 ```js
 <script>
 $('header a, .betainfo div a').click( 
-	function() {
-		$('.betainfo, .overlay').fadeToggle();
-	}
+    function() {
+        $('.betainfo, .overlay').fadeToggle();
+    }
 );
 </script>
 ```
@@ -1198,25 +1197,6 @@ add styles
 
 
 ### Tap Highlight Color
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
