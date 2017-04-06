@@ -32,35 +32,56 @@ Go to http://localhost:9001 in your browser
 
 Examine the Terminal to see activity.
 
-ctrl-c to stop the Python server.
+Multiple Terminal tabs. ctrl-c to stop the Python server.
 
-## Node
+## Node Package Manager
+
+Warning - this is going to seem like a lot but this system is an essential part of web design. 
 
 Download and install [Node](https://nodejs.org/en/)
 
-NPM - [Node Package Manager](https://www.npmjs.com)
+NPM - [Node Package Manager](https://www.npmjs.com) - not unlike Package Control for Sublime text but much more powerful.
 
 ```
+$ cd <session-4> // or copy and paste the folder you want to go to
 $ npm init
-$ cd <session-4> // copy and paste the folder you want to go to
 $ npm install browser-sync --save
 ```
 
-Note the modules folder
+Note package.json and node_modules folder
 
 [Browser Sync](https://www.browsersync.io) 
-[Documentation](https://browsersync.io/docs)
-[Github Repo](https://github.com/BrowserSync/browser-sync)
 
 ```
   "scripts": {
-    "start": "browser-sync start --browser \"google chrome\" --server 'app' --files 'app'"
+    "start": "browser-sync start --server 'app' --files 'app'"
   },
 ```
+
+```
+$ npm run start
+```
+
+Review browser Sync @ 3001
+
+[Documentation](https://browsersync.io/docs)
+[Github Repo](https://github.com/BrowserSync/browser-sync)
+
+Demo `npm install` on `dev` branch
+
+```
+  "scripts": {
+    "start": "browser-sync start --browser \"google chrome\" --server 'app' --files 'app'",
+    "startUp": "browser-sync start --browser \"google chrome\" --server 'definition-list' --files 'definition-list'"
+  },
+```
+
 
 ## Definition List Styling
 
 [Here is a summary](http://www.w3schools.com/html/html_lists.asp) of the different types of lists in HTML. And [an article](http://maxdesign.com.au/articles/definition/) specifically on definition lists.
+
+![Sample image](definition-list/final.png)
 
 Examine the html in the browser.
 

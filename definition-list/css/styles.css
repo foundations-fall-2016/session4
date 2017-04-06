@@ -1,5 +1,5 @@
 * {
-	margin:0; 
+	margin:0;
 	padding:0;
 }
 
@@ -13,4 +13,23 @@ body {
 	width:300px; 
 	border:2px solid #c8cdd2;
 	padding:10px 0;
-} 
+}
+
+.menu-list dl {
+    margin:10px 20px; 
+}
+
+.menu-list dt {
+    letter-spacing: 1px; 
+    color: #627081; 
+}
+
+.menu-list dd {
+    font-size: 0.875em;
+    line-height: 1.6; 
+    color: #666; 
+}
+
+.menu-list img {
+    float:left;
+}
