@@ -424,6 +424,40 @@ And then use padding as opposed to margins - which are not part of the box model
 ```
 
 
+<!-- ## JS
+
+Add links to the hi-res images for ALL the thumbnails:
+
+```
+<dd><a href="img/1-lg.jpg"><img src="img/1.jpg" title="Tuna roll" alt="Tuna Roll"></a></dd>
+```
+
+Select one of the links
+
+```
+var linkedImage = document.querySelector('a')
+console.log(linkedImage)
+```
+
+Select all of the links:
+
+```
+var linkedImages = document.querySelectorAll('a')
+console.log(linkedImages)
+```
+
+use `.forEach` to attach an event listener to each link:
+
+```
+var linkedImages = document.querySelectorAll('a')
+var imageLinks = [...linkedImages]
+imageLinks.forEach(addEventListener('click', run))
+
+function run() {
+  event.preventDefault();
+}
+``` -->
+
 
 
 ## Basilica
