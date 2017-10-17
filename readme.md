@@ -227,15 +227,15 @@ Or use rgb
 
 `box-shadow: 1px 1px 3px rgb(200, 200, 200);`
 
-Or use rgba.
+Or rgba.
 
 `box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);`
 
 #### Replacing the bg Image
 
-See [this article](https://css-tricks.com/examples/GradientBorder/) for examples of fancy border effects (note: the vendor prefixes - `-webkit-` etc.` - are not really necessary at this point).
+See [this article](https://css-tricks.com/examples/GradientBorder/) for examples of fancy border effects (note: the vendor prefixes - `-webkit-` etc. - are not really necessary at this point).
 
-The problem with using the background image is that the width of the layout needs to be fixed.
+The problem with using the background image is that it cannot expand to cover various widths.
 
 ```
 border-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0)) 1 100%;
@@ -258,63 +258,13 @@ Note the use of border-image below:
 }
 ```
 
-
-
-<!-- ## Box Model - Border Box
-
-Set the width property to `min-width: 304px;`
-
-Working with the alternate box model in version-2-fluid.
-
-This is a simplified version of the first exercise. Examine the html and css.
-
-Remove the width rule from the menu-list and note its size. Add `width: 100%`.
-
-```css
-.menu-list {
-    ...
-    /*width: 300px;*/
-    width: 100%;
-}
-```
-
-Note the horizontal scroll bar.
-
-Initialize border-box on all elements:
-
-```css
-* {
-    ...
-    box-sizing: border-box;
-}
-```
-
-No scrolling.
-
-```css
-.menu-list dl {
-    ...
-    width: calc(100% - 20px);
-}
-```
-
-```css
-.menu-list dt {
-    ...
-    width: calc(100% - 98px);
-}
-```
- -->
-
-## (Un)Responsive Design - Just the Basics
-
-### No Media Queries
+### A More Flexible Structure
 
 The foundation for responsive design is not media queries but a flexible layout that uses percentages.
 
-In order to use percentages we rely on the non-additive box-sizing: border-box method:
+In order to more easily use percentages we will rely on the non-additive box-sizing: border-box method:
 
-```
+```css
 * {
     margin: 0;
     padding: 0;
@@ -322,10 +272,14 @@ In order to use percentages we rely on the non-additive box-sizing: border-box m
 }
 ```
 
-And then use padding as opposed to margins - which are not part of the box model - to achieve our goals. (Note: remove the alternating layout.)
+Use padding as opposed to margins - which are not part of the box model - to achieve our goals.
 
-```
+```css
+
+...
+
 .menu-list {
+    position: relative;
     padding: 10px;
     float: left;
     min-width:304px; 
@@ -356,13 +310,10 @@ And then use padding as opposed to margins - which are not part of the box model
     padding-right: 12px;
 }
 
-.menu-list dd {
+.menu-list dd + dd {
     font-size: 0.875em;
     line-height: 1.6; 
     color: #666; 
-}
-
-.menu-list dd + dd {
     float: right;
     width: 80%;
 }
@@ -382,9 +333,9 @@ And then use padding as opposed to margins - which are not part of the box model
 
 ## JS
 
-Create a popover div 
+Create a popover div (add it as the last element in the `menu-list` div):
 
-```
+```html
 <div class="popover">
     <img src="img/1-lg.jpg" />
 </div>
@@ -392,12 +343,19 @@ Create a popover div
 
 Create styles for it:
 
-```
+```css
 .popover {
     position: absolute;
     top: 30%;
+    left: 30%;
+    width: 50%;
     display: none;
 }
+
+.popover img {
+    width: 100%;
+}
+
 .showme {
     display: block;
 }
@@ -406,8 +364,12 @@ Create styles for it:
 Add links to the hi-res images for ALL the thumbnails, e.g.:
 
 ```
-<dd><a href="img/1-lg.jpg"><img src="img/1.jpg" title="Tuna roll" alt="Tuna Roll"></a></dd>
+<dd>
+    <a href="img/1-lg.jpg"><img src="img/1.jpg" title="Tuna roll" alt="Tuna Roll"></a>
+</dd>
 ```
+
+### JavaScript
 
 Select one of the links:
 
@@ -431,26 +393,26 @@ for ( var i = 0; i < linkedImages.length; i++){
 }
 ```
 
-Add the `run` function:
+Add the `run` function and test to make sure nothing happens when you click on an image:
 
 ```js
 function run() {
-event.preventDefault();
+    event.preventDefault();
 }
 ```
 
-Now we need to create a reference to the popover:
+Now we need to create a reference to the popover div *and* the popover image:
 
-```
+```js
 var popover = document.querySelector('.popover')
 var popoverImage = popover.querySelector('.popover img')
 ```
 
-Note the second line where we use popover.querySelector instead of document.querySelector.
+Note the second line where we use `popover.querySelector` instead of `document.querySelector`. Not necessary but a bit more concise.
 
 Change the src attribute for the popoverImage _and_ toggle the showme class on the popover:
 
-```
+```js
 function run() {
     popoverImage.setAttribute('src', this.href)
     popover.classList.toggle('showme')
@@ -458,17 +420,21 @@ function run() {
 }
 ```
 
-use `.forEach` to attach an event listener to each link:
+#### JavaScript Variants
 
-```
+use a spead operator to create an array out of our imageLinks nodelist and use `.forEach` to attach an event listener to each link:
+
+```js
 var linkedImages = document.querySelectorAll('a')
 var imageLinks = [...linkedImages]
 imageLinks.forEach( imageLink => imageLink.addEventListener('click', run))
 ```
 
+We can also use arrow functions instead of the anaymous function.
+
 Here is the entire JavaScript:
 
-```
+```js
 var popover = document.querySelector('.popover')
 var popoverImage = popover.querySelector('.popover img')
 
