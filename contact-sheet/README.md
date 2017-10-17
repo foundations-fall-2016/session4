@@ -103,7 +103,7 @@ Add:
 ```
 Edit 
 
-```
+```css
 #footer { 
 	...
 	clear:both;
@@ -119,7 +119,7 @@ Note the clear property and the effect it has on the collapsed body. No floating
 }
 ```
 
-We want all images to be centered vertically and horizontally within a160 x 160px square (ref the slide images). 
+We want all images to be centered vertically and horizontally within a 160 x 160px square (refer to the slide images). 
 
 We do this by adding 16px to the top and bottom of .ls images and to the left and right of .pt images. (16 x 2 =36) (96 + 36 = 128)
 
@@ -379,7 +379,7 @@ Slide items against each other.
 EDIT - Move catno over
 
 ```css
-.pic.catno {
+.pic .catno {
   ...
 	margin-right: 4.5rem;
 }
@@ -441,7 +441,7 @@ Increase spacing between items
 ```
 
 
-### Flex Version
+### Alternate Flex Version
 
 Remove floats, clears, and `/* margin-left:140px; */` from .pic ul:
 
