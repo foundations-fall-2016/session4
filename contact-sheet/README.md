@@ -65,7 +65,7 @@ Note: The box model uses font size to calculate padding. It creates a context wh
 
 Change units to rem:
 
-```
+```css
 #footer {
   padding-top: 3rem;
   font-size: 1rem; 
@@ -102,6 +102,7 @@ Add:
 }
 ```
 Edit 
+
 ```
 #footer { 
 	...
@@ -290,7 +291,7 @@ Flex item align-self: increase height of nav to 5rem
 
 ## Part Two - Catalog View
 
-![Sample image](Contact-sheet/2-catalog.jpg)
+![Sample image](contact-sheet/2-catalog.jpg)
 
 Unlink the current css:
 
