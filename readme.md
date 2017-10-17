@@ -331,7 +331,7 @@ Use padding as opposed to margins - which are not part of the box model - to ach
 ```
 
 
-## JS
+## JavaScript
 
 Create a popover div (add it as the last element in the `menu-list` div):
 
