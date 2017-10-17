@@ -23,12 +23,12 @@ Slide background images are 160px by 160px and are located in the css folder.
 
 🔥frame-ls and -pt images - are 160px square:
 
-![Sample image](contact-sheet/styles/img/frame-ls.gif)
-![Sample image](contact-sheet/styles/img/frame-pt.gif)
+![Sample image](contact-sheet/css/img/frame-ls.gif)
+![Sample image](contact-sheet/css/img/frame-pt.gif)
 
 The black area in the center of each slide image is the same as the image sizes (128px by 96px or 96px by 128px).
 
-![Sample image](Contact-sheet/1-contact-sheet.jpg)
+![Sample image](contact-sheet/1-contact-sheet.jpg)
 
 Add and examine the normalize.css file
 
