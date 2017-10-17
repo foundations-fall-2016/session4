@@ -2,80 +2,12 @@
 
 ## Homework
 
-1. Midterm time! Files are located [here](http://daniel.deverell.com/css-files/_midterm-files.zip). http://daniel.deverell.com/css-files/_midterm-files.zip. You need select one layout from the samples,  write HTML for the content (.txt files are provided for convenience), and create CSS to match the layout. Be sure to use `white-space: pre;` for the poetry where appropriate.
-2. Style the popover and create close using methods similar to class 2 (a 'X' close button). Add an overlay that can also be clicked on to dismiss the popover.
-
+1. Midterm continued. Files are located [here](http://daniel.deverell.com/css-files/_midterm-files.zip). http://daniel.deverell.com/css-files/_midterm-files.zip. You need select one layout from the samples,  write HTML for the content (.txt files are provided for convenience), and create CSS to match the layout. Be sure to use `white-space: pre;` for the poetry where appropriate.
 
 ## Reading 
 
 * [JavaScript for Web Designers](https://abookapart.com/products/javascript-for-web-designers) - finish it
 * [SASS for Web Designers](https://abookapart.com/products/sass-for-web-designers) - begin reading
-
-## Terminal Basics
-
-* For Windows users - [CMDR](http://cmder.net)
-
-```
-$ cd <PATH> // copy and paste the folder you want to go to
-$ ls 
-$ls -al  // flags expand the command
-$ pwd
-```
-
-Look at tab completion, `..` and copy paste.
-
-```
-$ cd <definition-list>
-$ python -m SimpleHTTPServer 9001
-```
-
-Go to http://localhost:9001 in your browser
-
-Examine the Terminal to see activity.
-
-Multiple Terminal tabs. ctrl-c to stop the Python server.
-
-## Node Package Manager
-
-Warning - this is going to seem like a lot but this system is an essential part of web design. 
-
-Download and install [Node](https://nodejs.org/en/)
-
-NPM - [Node Package Manager](https://www.npmjs.com) - not unlike Package Control for Sublime text but much more powerful.
-
-```
-$ cd <session-4> // or copy and paste the folder you want to go to
-$ npm init
-$ npm install browser-sync --save
-```
-
-Note package.json and node_modules folder
-
-[Browser Sync](https://www.browsersync.io) 
-
-```
-  "scripts": {
-    "start": "browser-sync start --server 'app' --files 'app'"
-  },
-```
-
-```
-$ npm run start
-```
-
-Review browser Sync @ 3001
-
-[Documentation](https://browsersync.io/docs)
-[Github Repo](https://github.com/BrowserSync/browser-sync)
-
-Demo `npm install` on `dev` branch
-
-```
-  "scripts": {
-    "start": "browser-sync start --browser \"google chrome\" --server 'app' --files 'app'",
-    "startUp": "browser-sync start --browser \"google chrome\" --server 'definition-list' --files 'definition-list'"
-  },
-```
 
 
 ## Definition List Styling
@@ -90,11 +22,32 @@ Review the default browser formatting for definition lists using the developer t
 
 ## The CSS
 
-Review existing CSS starter. Note the 300 pixel width and the 10px padding top and bottom.
+Note the existing CSS link in the HTML. 
 
 Add:
 
+```css
+* {
+    margin:0; 
+    padding:0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 1em;
+    font-size: 100%;
+}
+
+.menu-list {
+    width:300px; 
+    border:2px solid #c8cdd2;
+    padding:10px 0;
+} 
 ```
+
+Note the 300 pixel width and the 10px padding top and bottom.
+
+```css
 .menu-list dl {
     margin:20px; 
 }
@@ -136,8 +89,8 @@ Float the title `<td>` to the opposite side.
 
 ```css
 .menu-list dt {
-    float: right;
     ...
+    float: right;
 }
 ```
 
@@ -149,7 +102,7 @@ Width of box (300px) minus margins around each dl (20px * 2) minus the width of 
 
 ```css
 .menu-list dt {
-  ...
+    ...
     width: 180px;
 }
 ```
@@ -182,14 +135,14 @@ Float the menu-list container the prevent collapsing.
 
 ```css
 .menu-list {
-    float:left;
     ...
+    float:left;
 }
 ```
 
 After reviewing the final.png design we can see we need to add borders and space to the right of the image with a margin.
 
-```
+```css
 .menu-list img {
     ...
     margin: 0 8px 0 0;
@@ -280,6 +233,8 @@ Or use rgba.
 
 #### Replacing the bg Image
 
+See [this article](https://css-tricks.com/examples/GradientBorder/) for examples of fancy border effects (note: the vendor prefixes - `-webkit-` etc.` - are not really necessary at this point).
+
 The problem with using the background image is that the width of the layout needs to be fixed.
 
 ```
@@ -294,20 +249,20 @@ Note the use of border-image below:
 .menu-list {
     padding:10px 0;
     float:left;
-    width:304px; 
-    border-width: 4px 4px 0 4px;
+    width:304px;
+    border-width: 0 4px 0 4px;
     border-left-style: solid;
     border-right-style: solid;
     border-image: linear-gradient(to bottom, rgb(200, 205, 210), rgba(0, 0, 0, 0)) 1 100%;
-    background: linear-gradient(to bottom, rgba(200, 205, 210,1) 0%, rgba(200, 205, 210,1) 1%, rgba(240,240,240,0.4) 1.5%, rgba(240,240,240,0) 100%);
+    background-image: linear-gradient(to bottom, rgba(200, 205, 210,1) 0%, rgba(200, 205, 210,1) 0.15%, rgba(240,240,240,0.4) 1.5%, rgba(240,240,240,0) 100%);
 }
 ```
 
-See [this article](https://css-tricks.com/examples/GradientBorder/) for more examples of fancy border effects (the vendor prefixes - `-webkit-` etc.` - are not really necessary at this point).
 
-Set the width property to `min-width: 304px; `
 
 <!-- ## Box Model - Border Box
+
+Set the width property to `min-width: 304px;`
 
 Working with the alternate box model in version-2-fluid.
 
@@ -374,7 +329,7 @@ And then use padding as opposed to margins - which are not part of the box model
     padding: 10px;
     float: left;
     min-width:304px; 
-    border-width: 4px 4px 0 4px;
+    border-width: 0 4px 0 4px;
     border-left-style: solid;
     border-right-style: solid;
     border-image: linear-gradient(to bottom, rgb(200, 205, 210), rgba(0, 0, 0, 0)) 1 100%;
@@ -456,25 +411,29 @@ Add links to the hi-res images for ALL the thumbnails, e.g.:
 
 Select one of the links:
 
-```
+```js
 var linkedImage = document.querySelector('a')
 console.log(linkedImage)
 ```
 
 Edit to select ALL of the links:
 
-```
+```js
 var linkedImages = document.querySelectorAll('a')
 console.log(linkedImages)
 ```
 
-use `.forEach` to attach an event listener to each link:
+Use a `for loop` to assign each of the images an event listener.
 
+```js
+for ( var i = 0; i < linkedImages.length; i++){
+    linkedImages[i].addEventListener('click', run)
+}
 ```
-var linkedImages = document.querySelectorAll('a')
-var imageLinks = [...linkedImages]
-imageLinks.forEach( imageLink => imageLink.addEventListener('click', run))
 
+Add the `run` function:
+
+```js
 function run() {
 event.preventDefault();
 }
@@ -499,6 +458,14 @@ function run() {
 }
 ```
 
+use `.forEach` to attach an event listener to each link:
+
+```
+var linkedImages = document.querySelectorAll('a')
+var imageLinks = [...linkedImages]
+imageLinks.forEach( imageLink => imageLink.addEventListener('click', run))
+```
+
 Here is the entire JavaScript:
 
 ```
@@ -515,7 +482,6 @@ function run() {
     event.preventDefault();
 }
 ```
-
 
 
 ## Basilica (start if time permits)
@@ -1300,6 +1266,73 @@ add styles
 
 
 ### Tap Highlight Color
+
+
+## Terminal Basics
+
+* For Windows users - [CMDR](http://cmder.net)
+
+```
+$ cd <PATH> // copy and paste the folder you want to go to
+$ ls 
+$ls -al  // flags expand the command
+$ pwd
+```
+
+Look at tab completion, `..` and copy paste.
+
+```
+$ cd <definition-list>
+$ python -m SimpleHTTPServer 9001
+```
+
+Go to http://localhost:9001 in your browser
+
+Examine the Terminal to see activity.
+
+Multiple Terminal tabs. ctrl-c to stop the Python server.
+
+## Node Package Manager
+
+Warning - this is going to seem like a lot but this system is an essential part of web design. 
+
+Download and install [Node](https://nodejs.org/en/)
+
+NPM - [Node Package Manager](https://www.npmjs.com) - not unlike Package Control for Sublime text but much more powerful.
+
+```
+$ cd <session-4> // or copy and paste the folder you want to go to
+$ npm init
+$ npm install browser-sync --save
+```
+
+Note package.json and node_modules folder
+
+[Browser Sync](https://www.browsersync.io) 
+
+```
+  "scripts": {
+    "start": "browser-sync start --server 'app' --files 'app'"
+  },
+```
+
+```
+$ npm run start
+```
+
+Review browser Sync @ 3001
+
+[Documentation](https://browsersync.io/docs)
+[Github Repo](https://github.com/BrowserSync/browser-sync)
+
+Demo `npm install` on `dev` branch
+
+```
+  "scripts": {
+    "start": "browser-sync start --browser \"google chrome\" --server 'app' --files 'app'",
+    "startUp": "browser-sync start --browser \"google chrome\" --server 'definition-list' --files 'definition-list'"
+  },
+```
 
 
 

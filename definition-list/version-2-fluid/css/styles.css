@@ -11,7 +11,7 @@ body {
 	padding: 10px; 
 	float: left;
 	width: 300px;
-	border-width: 4px 4px 0 4px;
+	border-width: 0 4px 0 4px;
   border-left-style: solid;
   border-right-style: solid;
 	border-image: linear-gradient(to bottom, rgb(200, 205, 210), rgba(0, 0, 0, 0)) 1 100%;
