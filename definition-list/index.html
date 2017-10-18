@@ -9,19 +9,81 @@
 	<div class="menu-list">
 		<dl>
 			<dt>Spicy Tuna Roll</dt>
-			<dd><img src="img/1.jpg" title="Tuna roll" alt="Tuna Roll"></dd>
+			<dd>
+			<a href="img/1-lg.jpg"><img src="img/1.jpg" title="Tuna roll" alt="Tuna Roll" /></a>
+			</dd>
 			<dd>Our specialty - spicy tuna rolls. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </dd>
 		</dl>
 		<dl>
 			<dt>Sushi for Two</dt>
-			<dd><img src="img/2.jpg" title="Sushi for two" alt="Sushi for Two"></dd>
+			<dd>
+			<a href="img/2-lg.jpg"><img src="img/2.jpg" title="Sushi for two" alt="Sushi for Two"></a>
+			</dd>
 			<dd>Enjoy a special treat for two. Orders also available for three or more.</dd>
 		</dl>
 		<dl>
 			<dt>Omikase</dt>
-			<dd><img src="img/3.jpg" title="Omikase" alt="Omikase"></dd>
+			<dd>
+			<a href="img/3-lg.jpg"><img src="img/3.jpg" title="Omikase" alt="Omikase"></a>
+			</dd>
 			<dd>Allow our executive chef to prepare a special selection of the day's top choices.</dd>
 		</dl>
 	</div>
+
+	<div class="popover">
+		<img src="img/1-lg.jpg" />
+	</div>
+
+	<script type="text/javascript">
+		var linkedImages = document.querySelectorAll('.menu-list a')
+		var popover = document.querySelector('.popover')
+		var popoverImage = popover.querySelector('.popover img')
+
+		// for( var i=0; i<linkedImages.length; i++ ){
+		// 	linkedImages[i].addEventListener('click', run)
+		// }
+
+		var imageLinks = [...linkedImages]
+
+		function run(){
+			popoverImage.setAttribute('src', this.href)
+			popover.classList.toggle('showme')
+			event.preventDefault()
+		}
+
+	</script>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
